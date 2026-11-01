@@ -1,0 +1,46 @@
+{
+  "config": {
+    "dataset": "phishing",
+    "algorithm": "logistic",
+    "features": "extended",
+    "threshold": 0.25,
+    "folds": 5,
+    "max_depth": null,
+    "n_estimators": 100,
+    "class_weight": "none",
+    "random_seed": 42,
+    "source_split": "training_only"
+  },
+  "mean": {
+    "train_f1": 0.7685888408636066,
+    "f1": 0.7542125475066419,
+    "precision": 0.727866077127259,
+    "recall": 0.7851239669421488,
+    "accuracy": 0.913888888888889,
+    "pr_auc_average_precision": 0.8580170771200335
+  },
+  "sample_std": {
+    "train_f1": 0.009125023546007856,
+    "f1": 0.03029024299508705,
+    "precision": 0.0476701115415325,
+    "recall": 0.04254392620242565,
+    "accuracy": 0.012187450538044627,
+    "pr_auc_average_precision": 0.02630296942176641
+  },
+  "min": {
+    "train_f1": 0.7567030784508441,
+    "f1": 0.7237354085603113,
+    "precision": 0.6783216783216783,
+    "recall": 0.743801652892562,
+    "accuracy": 0.9013888888888889,
+    "pr_auc_average_precision": 0.8245046298211531
+  },
+  "max": {
+    "train_f1": 0.7809712586719524,
+    "f1": 0.7953667953667953,
+    "precision": 0.7931034482758621,
+    "recall": 0.8512396694214877,
+    "accuracy": 0.9263888888888889,
+    "pr_auc_average_precision": 0.8958583952421254
+  }
+}

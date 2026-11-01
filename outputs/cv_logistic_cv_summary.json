@@ -1,0 +1,46 @@
+{
+  "config": {
+    "dataset": "phishing",
+    "algorithm": "logistic",
+    "features": "extended",
+    "threshold": 0.3,
+    "folds": 5,
+    "max_depth": null,
+    "n_estimators": 100,
+    "class_weight": "none",
+    "random_seed": 42,
+    "source_split": "training_only"
+  },
+  "mean": {
+    "train_f1": 0.7769271354339069,
+    "f1": 0.765809234702698,
+    "precision": 0.7636650686765053,
+    "recall": 0.7702479338842976,
+    "accuracy": 0.9208333333333332,
+    "pr_auc_average_precision": 0.8580170771200335
+  },
+  "sample_std": {
+    "train_f1": 0.00921521395122901,
+    "f1": 0.03066751059317091,
+    "precision": 0.045749447707144904,
+    "recall": 0.04541696417862507,
+    "accuracy": 0.01098013076447356,
+    "pr_auc_average_precision": 0.02630296942176641
+  },
+  "min": {
+    "train_f1": 0.7611168562564633,
+    "f1": 0.7398373983739838,
+    "precision": 0.7196969696969697,
+    "recall": 0.7355371900826446,
+    "accuracy": 0.9111111111111111,
+    "pr_auc_average_precision": 0.8245046298211531
+  },
+  "max": {
+    "train_f1": 0.7835051546391752,
+    "f1": 0.8127490039840638,
+    "precision": 0.8317757009345794,
+    "recall": 0.8429752066115702,
+    "accuracy": 0.9347222222222222,
+    "pr_auc_average_precision": 0.8958583952421254
+  }
+}
