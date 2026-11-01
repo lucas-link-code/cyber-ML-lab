@@ -1,0 +1,18 @@
+algorithm	logistic
+estimator	LogisticRegression
+n_features	5
+numeric_scaling	standardized
+weights apply to preprocessor output
+classes	0	1
+
+intercept	-2.361589044
+positive_class	1
+weight is the decision function coefficient for the positive class
+positive probability is the sigmoid of intercept + sum of preprocessor output times weight
+
+index	feature	weight
+0	num__sender_reputation	-1.189867796
+2	num__urgent_language_score	0.8079014445
+3	num__has_shortened_url	0.1813785652
+1	num__url_count	0.1648093747
+4	num__body_length	-0.0889371465

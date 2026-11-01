@@ -1,0 +1,6 @@
+# Python >=3.11; tested using Python 3.11+ compatible APIs.
+# Optional XGBoost extension is intentionally not installed by default.
+numpy>=1.26,<3
+pandas>=2.2,<3
+scikit-learn>=1.5,<2
+matplotlib>=3.8,<4

@@ -1,0 +1,44 @@
+{
+  "name": "exercise01_lower_threshold",
+  "config": {
+    "problem": "classification",
+    "dataset": "phishing",
+    "dataset_file": "phishing_emails.csv",
+    "algorithm": "logistic",
+    "features": "basic",
+    "feature_columns": [
+      "sender_reputation",
+      "url_count",
+      "urgent_language_score",
+      "has_shortened_url",
+      "body_length"
+    ],
+    "threshold": 0.3,
+    "class_weight": "none",
+    "sampling": "none",
+    "split": "validation",
+    "scale": "yes",
+    "n_estimators": 100,
+    "max_depth": null,
+    "min_samples_leaf": 1,
+    "neighbors": 5,
+    "c": 1.0
+  },
+  "metrics": {
+    "n": 1200,
+    "positives": 201,
+    "tp": 137,
+    "fp": 82,
+    "tn": 917,
+    "fn": 64,
+    "accuracy": 0.8783333333333333,
+    "precision": 0.6255707762557078,
+    "recall": 0.681592039800995,
+    "f1": 0.6523809523809524,
+    "fpr": 0.08208208208208208,
+    "predicted_positive_rate": 0.1825,
+    "roc_auc": 0.8919616133546482,
+    "pr_auc_average_precision": 0.7416030065297693,
+    "train_f1": 0.6221161495624503
+  }
+}

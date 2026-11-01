@@ -1,0 +1,51 @@
+{
+  "name": "exercise02_extended",
+  "config": {
+    "problem": "classification",
+    "dataset": "phishing",
+    "dataset_file": "phishing_emails.csv",
+    "algorithm": "logistic",
+    "features": "extended",
+    "feature_columns": [
+      "sender_reputation",
+      "url_count",
+      "suspicious_url_count",
+      "urgent_language_score",
+      "has_shortened_url",
+      "body_length",
+      "attachment_count",
+      "subject_length",
+      "spf_result",
+      "dkim_result",
+      "dmarc_result",
+      "sender_domain"
+    ],
+    "threshold": 0.3,
+    "class_weight": "none",
+    "sampling": "none",
+    "split": "validation",
+    "scale": "yes",
+    "n_estimators": 100,
+    "max_depth": null,
+    "min_samples_leaf": 1,
+    "neighbors": 5,
+    "c": 1.0
+  },
+  "metrics": {
+    "n": 1200,
+    "positives": 201,
+    "tp": 162,
+    "fp": 46,
+    "tn": 953,
+    "fn": 39,
+    "accuracy": 0.9291666666666667,
+    "precision": 0.7788461538461539,
+    "recall": 0.8059701492537313,
+    "f1": 0.7921760391198044,
+    "fpr": 0.04604604604604605,
+    "predicted_positive_rate": 0.17333333333333334,
+    "roc_auc": 0.9438443418542921,
+    "pr_auc_average_precision": 0.871444540829146,
+    "train_f1": 0.7725392886683209
+  }
+}

@@ -1,0 +1,43 @@
+algorithm	logistic
+estimator	LogisticRegression
+n_features	30
+numeric_scaling	standardized
+weights apply to preprocessor output
+classes	0	1
+
+intercept	0.007946596593
+positive_class	1
+weight is the decision function coefficient for the positive class
+positive probability is the sigmoid of intercept + sum of preprocessor output times weight
+
+index	feature	weight
+10	cat__spf_result_pass	-1.404433256
+17	cat__dmarc_result_pass	-1.175345017
+14	cat__dkim_result_pass	-0.9371120798
+0	num__sender_reputation	-0.9258192831
+9	cat__spf_result_none	0.9044482928
+23	cat__sender_domain_offers.example	-0.855823845
+16	cat__dmarc_result_none	0.8158628833
+27	cat__sender_domain_support-portal.example	0.8112811102
+26	cat__sender_domain_service-desk.example	0.7181617583
+7	num__subject_length	0.6970406135
+2	num__suspicious_url_count	0.6759003207
+22	cat__sender_domain_notify-gateway.example	0.6310193867
+8	cat__spf_result_fail	0.5892647191
+19	cat__sender_domain_hr-updates.example	0.5881011604
+12	cat__dkim_result_fail	0.5767075372
+25	cat__sender_domain_secure-mail.example	-0.5752885898
+18	cat__sender_domain_corp-notify.example	-0.4611029287
+6	num__attachment_count	0.4253624904
+13	cat__dkim_result_none	0.3926326898
+15	cat__dmarc_result_fail	0.391710281
+3	num__urgent_language_score	0.3728138644
+29	cat__sender_domain_updates.example	-0.3531000849
+21	cat__sender_domain_mailer.example	-0.3482872708
+20	cat__sender_domain_invoices.example	0.2452982006
+24	cat__sender_domain_rewards.example	-0.238561015
+4	num__has_shortened_url	0.2036927318
+28	cat__sender_domain_ticketing.example	-0.1294697347
+5	num__body_length	-0.1066832267
+11	cat__spf_result_softfail	-0.05705160885
+1	num__url_count	0.0472412578

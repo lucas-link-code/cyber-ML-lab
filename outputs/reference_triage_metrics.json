@@ -1,0 +1,23 @@
+{
+  "name": "reference_triage",
+  "config": {
+    "problem": "regression",
+    "dataset": "triage",
+    "dataset_file": "alert_triage.csv",
+    "algorithm": "linear",
+    "features": "basic",
+    "split": "validation",
+    "alpha": 1.0,
+    "n_estimators": 120,
+    "max_depth": null,
+    "min_samples_leaf": 3
+  },
+  "metrics": {
+    "n": 700,
+    "mae": 31.289223978862008,
+    "mse": 1571.4703933821709,
+    "rmse": 39.64177586060154,
+    "r2": 0.22792162340428568,
+    "train_mae": 33.28767443313881
+  }
+}
