@@ -28,5 +28,3 @@ python scripts/run_classification.py --dataset edr --dataset-file datasets/edr_e
 **COMPARISON:** python scripts/compare_models.py shift_basic shift_extended --name compare_shift_features
 
 **LESSON:** Model drift is a measured performance change; data drift is an input distribution change. To attribute deployment degradation, evaluate a frozen model trained on the old cohort against a separate new cohort, not merely a newly trained model on that cohort.
-
-**INTERVIEW CONNECTION:** “The developer environment changed and false positives spiked. How would you detect drift and retest the existing model?”

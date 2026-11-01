@@ -29,5 +29,3 @@ python scripts/inspect_errors.py --experiment edr_default --type fn --rows 12
 python scripts/inspect_errors.py --experiment edr_low_threshold --type fp --rows 12
 
 **LESSON:** Recall is the proportion of all truly malicious events caught. A lower cutoff typically increases TP but also FP; a good production operating point requires a quantified FPR/analyst-capacity ceiling.
-
-**INTERVIEW CONNECTION:** “Our EDR model misses malicious processes. What would you change first, and how would you constrain false alarms?”

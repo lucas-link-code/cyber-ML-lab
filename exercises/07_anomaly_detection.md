@@ -29,5 +29,3 @@ python scripts/inspect_errors.py --experiment anomaly_global --type fp --rows 12
 python scripts/inspect_errors.py --experiment anomaly_role_strict --type fp --rows 12
 
 **LESSON:** Learn population-specific baselines when roles differ materially; reducing contamination generally lowers alerts but may increase missed anomalies. Compare FPR, FP, recall and alerts, not just precision.
-
-**INTERVIEW CONNECTION:** “Why does an unsupervised network model alert on legitimate developer builds? How do you tune it without treating anomalies as confirmed threats?”

@@ -115,7 +115,7 @@ For anomaly detection, fitting and score-threshold calibration use **only traini
 
 **Suggested order**: 01 → 02 → 03 → 04 → 05 → 06 → 07 → 09 → 10 → 11 → 12 → 13 → 14 → 08.
 
-The standalone instructions are in `exercises/`. Each includes a single-variable experiment, what to observe, questions, comparisons, and an interview scenario. `solutions/exercise_solutions.md` is a spoiler file; do not open it before attempting the independent challenge.
+The standalone instructions are in `exercises/`. Each includes a single-variable experiment, what to observe, questions, comparisons, and a scenario. `solutions/exercise_solutions.md` is a spoiler file; do not open it before attempting the independent challenge.
 
 ## 6. Dataset contents
 

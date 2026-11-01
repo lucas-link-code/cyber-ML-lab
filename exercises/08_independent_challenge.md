@@ -29,5 +29,3 @@ python scripts/run_classification.py --dataset edr --dataset-file datasets/edr_e
 # Replace YOUR_NEW_NAME with the name you chose for your second run.
 
 **LESSON:** Operational model selection requires an explicit precision/recall/FPR objective, a held-out evaluation set and an explanation of likely generalisation risks. Do not open the instructor solution file until you have an approach.
-
-**INTERVIEW CONNECTION:** “Here is a 6,500-row endpoint CSV; the existing classifier is noisy. Improve it and defend your methodology to a senior panel.”

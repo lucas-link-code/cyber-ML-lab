@@ -45,7 +45,7 @@ A defensible workflow: write down the starting confusion matrix; inspect at leas
 
 Remember: this challenge CSV is a separate generated cohort. Validation/test splits within it are host-exclusive. Training a new model on it does **not** prove that a model trained on `edr_events.csv` would generalise. Use `python scripts/evaluate_shift.py` to perform a frozen-old-model cross-cohort assessment.
 
-An acceptable interview response identifies the business metric, data-quality risks, label availability, feature selection, host/group leakage avoidance, retraining strategy, and once-only final test. The 0.75 / 0.60 / 0.03 thresholds are training goals, not universal SOC operating targets.
+A complete write-up identifies the business metric, data-quality risks, label availability, feature selection, host/group leakage avoidance, retraining strategy, and once-only final test. The 0.75 / 0.60 / 0.03 thresholds are training goals, not universal SOC operating targets.
 
 ## 09: Class imbalance
 

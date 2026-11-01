@@ -28,5 +28,3 @@ python scripts/run_classification.py --algorithm logistic --features basic --nam
 **COMPARISON:** python scripts/compare_models.py imbalance_logistic imbalance_weighted --name compare_class_imbalance
 
 **LESSON:** Class weighting penalises missed positives more during optimisation; it can increase recall while raising false alarms. Resampling must occur inside training folds, never before splitting.
-
-**INTERVIEW CONNECTION:** “Our model is 90% accurate on rare malware. What else must you check before declaring success?”

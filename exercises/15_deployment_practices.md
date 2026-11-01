@@ -27,5 +27,3 @@ python scripts/run_classification.py --algorithm logistic --features extended --
 **COMPARISON:** The validation file and final-test file have different rows and must **not** be compared using `compare_models.py`. The final test estimates generalisation; record it as an independently selected-model result, not a tuning step.
 
 **LESSON:** Batch inference scores a finite CSV; online inference handles incoming events in near real time. Monitoring requires timestamped inputs, schema checks, feature availability, delayed ground-truth feedback, drift alarms and approved retraining gates. A changed threat distribution may require retraining, not merely threshold adjustment.
-
-**INTERVIEW CONNECTION:** “How do you move a phishing classifier from a notebook into an operational SOC while preventing leakage, drift and alert overload?”

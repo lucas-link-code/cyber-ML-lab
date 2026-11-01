@@ -30,5 +30,3 @@ python scripts/compare_models.py alg_logistic alg_tree alg_forest --name compare
 **COMPARISON:** python scripts/compare_models.py alg_logistic alg_tree alg_forest alg_nb --name compare_four_algorithms
 
 **LESSON:** Model families can learn different boundaries even when fed identical features, splits and labels. The default threshold does not define ranking quality.
-
-**INTERVIEW CONNECTION:** “Given a labelled phishing CSV, how would you compare logistic regression versus Random Forest fairly?”

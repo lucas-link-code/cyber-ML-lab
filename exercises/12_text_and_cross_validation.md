@@ -28,5 +28,3 @@ python scripts/run_classification.py --algorithm logistic --features text --name
 **COMPARISON:** python scripts/compare_models.py metadata_only metadata_plus_text metadata_cv --name compare_text_cv
 
 **LESSON:** Feature engineering can change which observations a model can separate. GridSearchCV optimises on folds from training, not the final test; its chosen metric is average precision, which need not maximise F1 at 0.5.
-
-**INTERVIEW CONNECTION:** “Would TF-IDF improve a phishing detector, and how would you avoid overfitting when tuning it?”

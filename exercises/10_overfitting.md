@@ -27,5 +27,3 @@ python scripts/run_classification.py --dataset edr --algorithm random_forest --f
 **COMPARISON:** python scripts/compare_models.py rf_unrestricted rf_depth8 --name compare_overfitting
 
 **LESSON:** Limiting tree depth reduces effective model capacity but may help or hurt validation F1. For robust selection use cross-validation on training hosts and reserve a final holdout.
-
-**INTERVIEW CONNECTION:** “The model has 99% training detection but 60% validation detection. Describe a disciplined debugging process.”

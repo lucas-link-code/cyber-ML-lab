@@ -28,5 +28,3 @@ python scripts/run_classification.py --dataset phishing --algorithm logistic --f
 **COMPARISON:** Open `outputs/exercise01_metrics.json` and `charts/exercise01_confusion.png`. Check that TP, FP, FN and TN agree with printed precision and recall.
 
 **LESSON:** CSV → chosen features → training-only preprocessing → `fit()` → probabilities → threshold → confusion matrix. Training learns coefficients; a threshold turns a score into an operational alert.
-
-**INTERVIEW CONNECTION:** “What is the target variable? Why did you omit the email ID? Explain this confusion matrix to a SOC lead.”

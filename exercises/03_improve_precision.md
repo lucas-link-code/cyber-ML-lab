@@ -29,5 +29,3 @@ python scripts/inspect_errors.py --experiment phish_loose --type fp --rows 15
 python scripts/inspect_errors.py --experiment phish_tight --type fn --rows 10
 
 **LESSON:** At a higher threshold, fewer benign emails trigger alerts, so precision often rises; some low-score malicious messages are missed, reducing recall. ROC-AUC and PR-AUC are unchanged because the score ranking was not altered.
-
-**INTERVIEW CONNECTION:** “The phishing team has too many false positives. Improve precision while maintaining a recall SLA and explain the cost.”

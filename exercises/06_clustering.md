@@ -27,5 +27,3 @@ python scripts/run_clustering.py --features raw --scale no --k 4 --elbow --name 
 **COMPARISON:** python scripts/compare_models.py km_unscaled km_scaled km_behavioral --name compare_clustering
 
 **LESSON:** K-means uses distances; `StandardScaler` changes geometry. Dropping weak signals such as raw port numbers can change clusters. The elbow is a heuristic; silhouette need not always improve. For DBSCAN try `--algorithm dbscan --eps 1.6 --min-samples 12`, and for hierarchical use `--algorithm hierarchical --k 4`.
-
-**INTERVIEW CONNECTION:** “Why did the K-means cluster assignments change after scaling byte counts and frequencies?”

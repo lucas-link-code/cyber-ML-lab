@@ -27,5 +27,3 @@ python scripts/leakage_demo.py
 **COMPARISON:** Compare the two printed rows `valid_features_only` and `LEAKY_POST_OUTCOME`. The honest result is the one that can be computed before analyst investigation.
 
 **LESSON:** Very high scores may indicate leakage, duplication, schema errors or a trivially predictive signal. Data lineage and time-of-availability matter more than a leaderboard score.
-
-**INTERVIEW CONNECTION:** “Our phishing classifier achieved 99% accuracy after adding an analyst disposition column. What would you investigate?”

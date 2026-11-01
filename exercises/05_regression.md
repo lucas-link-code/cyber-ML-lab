@@ -29,5 +29,3 @@ python scripts/run_regression.py --algorithm linear --features basic --name tria
 python scripts/inspect_errors.py --experiment triage_boosting --type largest_residuals --rows 10
 
 **LESSON:** Adding relevant variables reduces omitted-variable error; a nonlinear learner can capture interactions between complexity, severity and workload. Better model complexity is not automatically better on held-out data.
-
-**INTERVIEW CONNECTION:** “Your alert-duration regression has high MAE. How would you determine whether features or algorithm choice are responsible?”

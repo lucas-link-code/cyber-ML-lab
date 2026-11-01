@@ -2,7 +2,7 @@
 
 **OBJECTIVE:** Observe forward propagation, loss, gradients and weight updates in a tiny NumPy model.
 
-**SCENARIO:** An interviewer asks how learning differs in a neural network from fitting a linear classifier.
+**SCENARIO:** Compare how learning differs in a neural network from fitting a linear classifier.
 
 **DATASET:** A four-row, programmatically generated XOR dataset (no external CSV; toy appendix after cybersecurity core).
 
@@ -27,5 +27,3 @@ python scripts/neural_network_intro.py --epochs 3000 --rate 0.4 --name nn_defaul
 **COMPARISON:** Compare `outputs/nn_default_neural_metrics.json` with `outputs/nn_slow_neural_metrics.json` and the two loss charts.
 
 **LESSON:** Backpropagation uses the chain rule to compute how each weight contributes to loss; learning rate controls step size, not the learned target. Both too-small and too-large rates can harm convergence.
-
-**INTERVIEW CONNECTION:** “Explain, using a short Python example, what forward propagation and backpropagation do.”
