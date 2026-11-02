@@ -1,0 +1,2436 @@
+algorithm	gradient_boosting
+estimator	GradientBoostingClassifier
+n_features	30
+numeric_scaling	standardized
+weights apply to preprocessor output
+classes	0	1
+
+learned parameters are the split thresholds and the leaf values
+impurity_importance is the normalized impurity decrease, separate from the tree itself
+
+impurity_importance
+index	feature	impurity_importance
+0	num__sender_reputation	0.3847052704
+3	num__urgent_language_score	0.1677743221
+2	num__suspicious_url_count	0.1333372185
+10	cat__spf_result_pass	0.07760236719
+17	cat__dmarc_result_pass	0.06411278621
+14	cat__dkim_result_pass	0.04816973986
+7	num__subject_length	0.04525616074
+6	num__attachment_count	0.02015073179
+23	cat__sender_domain_offers.example	0.01092274887
+1	num__url_count	0.01039784614
+4	num__has_shortened_url	0.008049478571
+25	cat__sender_domain_secure-mail.example	0.006361816406
+5	num__body_length	0.00430918548
+26	cat__sender_domain_service-desk.example	0.003874981111
+27	cat__sender_domain_support-portal.example	0.002306935562
+21	cat__sender_domain_mailer.example	0.002146406753
+11	cat__spf_result_softfail	0.001365414269
+8	cat__spf_result_fail	0.001333571027
+19	cat__sender_domain_hr-updates.example	0.001171886509
+22	cat__sender_domain_notify-gateway.example	0.001102531723
+24	cat__sender_domain_rewards.example	0.0009929948358
+28	cat__sender_domain_ticketing.example	0.0009485702628
+18	cat__sender_domain_corp-notify.example	0.0008936242749
+12	cat__dkim_result_fail	0.0007921951569
+13	cat__dkim_result_none	0.000699072316
+20	cat__sender_domain_invoices.example	0.0003786005061
+9	cat__spf_result_none	0.0002697344456
+29	cat__sender_domain_updates.example	0.0002447521698
+15	cat__dmarc_result_fail	0.0002389368386
+16	cat__dmarc_result_none	9.01199105e-05
+
+learning_rate	0.1
+each stage leaf value is the raw tree output. The model multiplies it by learning_rate and adds the stages.
+
+stage	0
+|--- num__sender_reputation <= -1.296742
+|   |--- num__urgent_language_score <= 0.069909
+|   |   |--- cat__spf_result_pass <= 0.500000
+|   |   |   |--- value: [4.519930]
+|   |   |--- cat__spf_result_pass >  0.500000
+|   |   |   |--- value: [-0.407290]
+|   |--- num__urgent_language_score >  0.069909
+|   |   |--- cat__sender_domain_offers.example <= 0.500000
+|   |   |   |--- value: [4.977141]
+|   |   |--- cat__sender_domain_offers.example >  0.500000
+|   |   |   |--- value: [-1.202003]
+|--- num__sender_reputation >  -1.296742
+|   |--- num__suspicious_url_count <= 0.697705
+|   |   |--- cat__spf_result_pass <= 0.500000
+|   |   |   |--- value: [0.614483]
+|   |   |--- cat__spf_result_pass >  0.500000
+|   |   |   |--- value: [-0.848003]
+|   |--- num__suspicious_url_count >  0.697705
+|   |   |--- cat__spf_result_pass <= 0.500000
+|   |   |   |--- value: [4.996758]
+|   |   |--- cat__spf_result_pass >  0.500000
+|   |   |   |--- value: [1.088025]
+
+stage	1
+|--- num__sender_reputation <= -1.230873
+|   |--- num__urgent_language_score <= 0.319228
+|   |   |--- cat__spf_result_pass <= 0.500000
+|   |   |   |--- value: [3.321110]
+|   |   |--- cat__spf_result_pass >  0.500000
+|   |   |   |--- value: [0.160557]
+|   |--- num__urgent_language_score >  0.319228
+|   |   |--- cat__spf_result_pass <= 0.500000
+|   |   |   |--- value: [3.964428]
+|   |   |--- cat__spf_result_pass >  0.500000
+|   |   |   |--- value: [2.711807]
+|--- num__sender_reputation >  -1.230873
+|   |--- num__suspicious_url_count <= 0.697705
+|   |   |--- cat__spf_result_pass <= 0.500000
+|   |   |   |--- value: [0.468251]
+|   |   |--- cat__spf_result_pass >  0.500000
+|   |   |   |--- value: [-0.821495]
+|   |--- num__suspicious_url_count >  0.697705
+|   |   |--- cat__dkim_result_pass <= 0.500000
+|   |   |   |--- value: [3.600811]
+|   |   |--- cat__dkim_result_pass >  0.500000
+|   |   |   |--- value: [0.734434]
+
+stage	2
+|--- num__sender_reputation <= -1.230873
+|   |--- num__urgent_language_score <= 0.333079
+|   |   |--- cat__spf_result_pass <= 0.500000
+|   |   |   |--- value: [2.640564]
+|   |   |--- cat__spf_result_pass >  0.500000
+|   |   |   |--- value: [0.098603]
+|   |--- num__urgent_language_score >  0.333079
+|   |   |--- num__suspicious_url_count <= 0.697705
+|   |   |   |--- value: [2.052382]
+|   |   |--- num__suspicious_url_count >  0.697705
+|   |   |   |--- value: [3.051443]
+|--- num__sender_reputation >  -1.230873
+|   |--- num__suspicious_url_count <= 2.778682
+|   |   |--- cat__dmarc_result_pass <= 0.500000
+|   |   |   |--- value: [1.050868]
+|   |   |--- cat__dmarc_result_pass >  0.500000
+|   |   |   |--- value: [-0.703914]
+|   |--- num__suspicious_url_count >  2.778682
+|   |   |--- cat__sender_domain_secure-mail.example <= 0.500000
+|   |   |   |--- value: [3.478813]
+|   |   |--- cat__sender_domain_secure-mail.example >  0.500000
+|   |   |   |--- value: [-1.242386]
+
+stage	3
+|--- num__sender_reputation <= -1.230873
+|   |--- num__urgent_language_score <= 0.069909
+|   |   |--- num__subject_length <= -0.209915
+|   |   |   |--- value: [-1.222503]
+|   |   |--- num__subject_length >  -0.209915
+|   |   |   |--- value: [0.577393]
+|   |--- num__urgent_language_score >  0.069909
+|   |   |--- num__suspicious_url_count <= 0.697705
+|   |   |   |--- value: [1.574630]
+|   |   |--- num__suspicious_url_count >  0.697705
+|   |   |   |--- value: [2.543959]
+|--- num__sender_reputation >  -1.230873
+|   |--- num__suspicious_url_count <= 0.697705
+|   |   |--- cat__spf_result_pass <= 0.500000
+|   |   |   |--- value: [0.470268]
+|   |   |--- cat__spf_result_pass >  0.500000
+|   |   |   |--- value: [-0.760370]
+|   |--- num__suspicious_url_count >  0.697705
+|   |   |--- cat__spf_result_pass <= 0.500000
+|   |   |   |--- value: [2.516963]
+|   |   |--- cat__spf_result_pass >  0.500000
+|   |   |   |--- value: [0.626151]
+
+stage	4
+|--- num__sender_reputation <= -1.230873
+|   |--- num__urgent_language_score <= 0.351547
+|   |   |--- cat__spf_result_pass <= 0.500000
+|   |   |   |--- value: [2.001443]
+|   |   |--- cat__spf_result_pass >  0.500000
+|   |   |   |--- value: [0.008443]
+|   |--- num__urgent_language_score >  0.351547
+|   |   |--- cat__dmarc_result_pass <= 0.500000
+|   |   |   |--- value: [2.320842]
+|   |   |--- cat__dmarc_result_pass >  0.500000
+|   |   |   |--- value: [1.438956]
+|--- num__sender_reputation >  -1.230873
+|   |--- num__suspicious_url_count <= 2.778682
+|   |   |--- cat__dmarc_result_pass <= 0.500000
+|   |   |   |--- value: [0.910770]
+|   |   |--- cat__dmarc_result_pass >  0.500000
+|   |   |   |--- value: [-0.642248]
+|   |--- num__suspicious_url_count >  2.778682
+|   |   |--- cat__sender_domain_secure-mail.example <= 0.500000
+|   |   |   |--- value: [2.421719]
+|   |   |--- cat__sender_domain_secure-mail.example >  0.500000
+|   |   |   |--- value: [-1.227900]
+
+stage	5
+|--- num__sender_reputation <= -1.230873
+|   |--- num__urgent_language_score <= 0.069909
+|   |   |--- num__sender_reputation <= -2.367825
+|   |   |   |--- value: [3.143619]
+|   |   |--- num__sender_reputation >  -2.367825
+|   |   |   |--- value: [-0.198958]
+|   |--- num__urgent_language_score >  0.069909
+|   |   |--- cat__dkim_result_pass <= 0.500000
+|   |   |   |--- value: [2.089883]
+|   |   |--- cat__dkim_result_pass >  0.500000
+|   |   |   |--- value: [1.162973]
+|--- num__sender_reputation >  -1.230873
+|   |--- num__suspicious_url_count <= 0.697705
+|   |   |--- num__subject_length <= -0.025058
+|   |   |   |--- value: [-0.987696]
+|   |   |--- num__subject_length >  -0.025058
+|   |   |   |--- value: [-0.201765]
+|   |--- num__suspicious_url_count >  0.697705
+|   |   |--- num__urgent_language_score <= 0.674739
+|   |   |   |--- value: [0.259677]
+|   |   |--- num__urgent_language_score >  0.674739
+|   |   |   |--- value: [1.889556]
+
+stage	6
+|--- num__sender_reputation <= -1.700546
+|   |--- num__urgent_language_score <= 0.044516
+|   |   |--- cat__sender_domain_service-desk.example <= 0.500000
+|   |   |   |--- value: [-0.563348]
+|   |   |--- cat__sender_domain_service-desk.example >  0.500000
+|   |   |   |--- value: [3.641929]
+|   |--- num__urgent_language_score >  0.044516
+|   |   |--- cat__sender_domain_offers.example <= 0.500000
+|   |   |   |--- value: [1.713329]
+|   |   |--- cat__sender_domain_offers.example >  0.500000
+|   |   |   |--- value: [-1.441473]
+|--- num__sender_reputation >  -1.700546
+|   |--- cat__dmarc_result_pass <= 0.500000
+|   |   |--- num__urgent_language_score <= -0.142473
+|   |   |   |--- value: [-0.537876]
+|   |   |--- num__urgent_language_score >  -0.142473
+|   |   |   |--- value: [1.936100]
+|   |--- cat__dmarc_result_pass >  0.500000
+|   |   |--- cat__spf_result_pass <= 0.500000
+|   |   |   |--- value: [0.648051]
+|   |   |--- cat__spf_result_pass >  0.500000
+|   |   |   |--- value: [-0.656003]
+
+stage	7
+|--- num__suspicious_url_count <= 0.697705
+|   |--- num__sender_reputation <= -1.700546
+|   |   |--- num__urgent_language_score <= 1.085653
+|   |   |   |--- value: [0.690931]
+|   |   |--- num__urgent_language_score >  1.085653
+|   |   |   |--- value: [1.688600]
+|   |--- num__sender_reputation >  -1.700546
+|   |   |--- cat__dkim_result_pass <= 0.500000
+|   |   |   |--- value: [0.802852]
+|   |   |--- cat__dkim_result_pass >  0.500000
+|   |   |   |--- value: [-0.614334]
+|--- num__suspicious_url_count >  0.697705
+|   |--- num__sender_reputation <= 0.057863
+|   |   |--- num__urgent_language_score <= -0.029357
+|   |   |   |--- value: [0.275248]
+|   |   |--- num__urgent_language_score >  -0.029357
+|   |   |   |--- value: [1.743215]
+|   |--- num__sender_reputation >  0.057863
+|   |   |--- num__subject_length <= 0.344654
+|   |   |   |--- value: [-0.849839]
+|   |   |--- num__subject_length >  0.344654
+|   |   |   |--- value: [1.056476]
+
+stage	8
+|--- num__sender_reputation <= -0.835661
+|   |--- cat__spf_result_pass <= 0.500000
+|   |   |--- num__urgent_language_score <= -1.049718
+|   |   |   |--- value: [-1.497618]
+|   |   |--- num__urgent_language_score >  -1.049718
+|   |   |   |--- value: [1.717479]
+|   |--- cat__spf_result_pass >  0.500000
+|   |   |--- cat__dkim_result_pass <= 0.500000
+|   |   |   |--- value: [1.580318]
+|   |   |--- cat__dkim_result_pass >  0.500000
+|   |   |   |--- value: [0.107826]
+|--- num__sender_reputation >  -0.835661
+|   |--- num__urgent_language_score <= 0.199186
+|   |   |--- num__subject_length <= -0.025058
+|   |   |   |--- value: [-1.114469]
+|   |   |--- num__subject_length >  -0.025058
+|   |   |   |--- value: [-0.405976]
+|   |--- num__urgent_language_score >  0.199186
+|   |   |--- cat__spf_result_pass <= 0.500000
+|   |   |   |--- value: [1.831292]
+|   |   |--- cat__spf_result_pass >  0.500000
+|   |   |   |--- value: [-0.109909]
+
+stage	9
+|--- num__suspicious_url_count <= 0.697705
+|   |--- cat__dmarc_result_pass <= 0.500000
+|   |   |--- num__urgent_language_score <= -0.142473
+|   |   |   |--- value: [-0.571560]
+|   |   |--- num__urgent_language_score >  -0.142473
+|   |   |   |--- value: [1.480777]
+|   |--- cat__dmarc_result_pass >  0.500000
+|   |   |--- cat__spf_result_pass <= 0.500000
+|   |   |   |--- value: [0.501950]
+|   |   |--- cat__spf_result_pass >  0.500000
+|   |   |   |--- value: [-0.645341]
+|--- num__suspicious_url_count >  0.697705
+|   |--- num__sender_reputation <= 0.057863
+|   |   |--- num__urgent_language_score <= -0.029357
+|   |   |   |--- value: [0.278831]
+|   |   |--- num__urgent_language_score >  -0.029357
+|   |   |   |--- value: [1.498300]
+|   |--- num__sender_reputation >  0.057863
+|   |   |--- num__subject_length <= 0.344654
+|   |   |   |--- value: [-0.785472]
+|   |   |--- num__subject_length >  0.344654
+|   |   |   |--- value: [0.909213]
+
+stage	10
+|--- cat__dkim_result_pass <= 0.500000
+|   |--- num__urgent_language_score <= 0.053750
+|   |   |--- num__subject_length <= -0.025058
+|   |   |   |--- value: [-1.138277]
+|   |   |--- num__subject_length >  -0.025058
+|   |   |   |--- value: [0.333701]
+|   |--- num__urgent_language_score >  0.053750
+|   |   |--- num__sender_reputation <= 0.455939
+|   |   |   |--- value: [1.755585]
+|   |   |--- num__sender_reputation >  0.455939
+|   |   |   |--- value: [-0.137951]
+|--- cat__dkim_result_pass >  0.500000
+|   |--- num__sender_reputation <= -1.712002
+|   |   |--- cat__sender_domain_mailer.example <= 0.500000
+|   |   |   |--- value: [1.061902]
+|   |   |--- cat__sender_domain_mailer.example >  0.500000
+|   |   |   |--- value: [-1.842002]
+|   |--- num__sender_reputation >  -1.712002
+|   |   |--- num__attachment_count <= 0.445415
+|   |   |   |--- value: [-0.629105]
+|   |   |--- num__attachment_count >  0.445415
+|   |   |   |--- value: [0.367044]
+
+stage	11
+|--- cat__dmarc_result_pass <= 0.500000
+|   |--- num__urgent_language_score <= -0.142473
+|   |   |--- num__subject_length <= 0.159798
+|   |   |   |--- value: [-1.149316]
+|   |   |--- num__subject_length >  0.159798
+|   |   |   |--- value: [0.772188]
+|   |--- num__urgent_language_score >  -0.142473
+|   |   |--- num__sender_reputation <= 0.407253
+|   |   |   |--- value: [1.560807]
+|   |   |--- num__sender_reputation >  0.407253
+|   |   |   |--- value: [-0.510928]
+|--- cat__dmarc_result_pass >  0.500000
+|   |--- cat__spf_result_pass <= 0.500000
+|   |   |--- num__urgent_language_score <= 0.037590
+|   |   |   |--- value: [-0.484315]
+|   |   |--- num__urgent_language_score >  0.037590
+|   |   |   |--- value: [1.351185]
+|   |--- cat__spf_result_pass >  0.500000
+|   |   |--- num__sender_reputation <= -2.207449
+|   |   |   |--- value: [1.153153]
+|   |   |--- num__sender_reputation >  -2.207449
+|   |   |   |--- value: [-0.520148]
+
+stage	12
+|--- num__suspicious_url_count <= 0.697705
+|   |--- cat__dkim_result_pass <= 0.500000
+|   |   |--- num__urgent_language_score <= 0.076835
+|   |   |   |--- value: [-0.501284]
+|   |   |--- num__urgent_language_score >  0.076835
+|   |   |   |--- value: [1.499616]
+|   |--- cat__dkim_result_pass >  0.500000
+|   |   |--- num__subject_length <= -0.025058
+|   |   |   |--- value: [-0.885888]
+|   |   |--- num__subject_length >  -0.025058
+|   |   |   |--- value: [-0.093638]
+|--- num__suspicious_url_count >  0.697705
+|   |--- num__sender_reputation <= 0.057863
+|   |   |--- num__urgent_language_score <= -0.029357
+|   |   |   |--- value: [0.317927]
+|   |   |--- num__urgent_language_score >  -0.029357
+|   |   |   |--- value: [1.283955]
+|   |--- num__sender_reputation >  0.057863
+|   |   |--- num__subject_length <= 0.344654
+|   |   |   |--- value: [-0.723117]
+|   |   |--- num__subject_length >  0.344654
+|   |   |   |--- value: [0.787766]
+
+stage	13
+|--- cat__dmarc_result_pass <= 0.500000
+|   |--- num__urgent_language_score <= -0.142473
+|   |   |--- num__sender_reputation <= -1.405569
+|   |   |   |--- value: [3.537002]
+|   |   |--- num__sender_reputation >  -1.405569
+|   |   |   |--- value: [-0.426458]
+|   |--- num__urgent_language_score >  -0.142473
+|   |   |--- num__sender_reputation <= 0.407253
+|   |   |   |--- value: [1.390938]
+|   |   |--- num__sender_reputation >  0.407253
+|   |   |   |--- value: [-0.453636]
+|--- cat__dmarc_result_pass >  0.500000
+|   |--- cat__spf_result_pass <= 0.500000
+|   |   |--- num__urgent_language_score <= 0.037590
+|   |   |   |--- value: [-0.424948]
+|   |   |--- num__urgent_language_score >  0.037590
+|   |   |   |--- value: [1.182169]
+|   |--- cat__spf_result_pass >  0.500000
+|   |   |--- num__sender_reputation <= -2.207449
+|   |   |   |--- value: [1.020381]
+|   |   |--- num__sender_reputation >  -2.207449
+|   |   |   |--- value: [-0.477333]
+
+stage	14
+|--- num__urgent_language_score <= 0.799398
+|   |--- num__subject_length <= -0.025058
+|   |   |--- num__sender_reputation <= -1.729185
+|   |   |   |--- value: [0.736004]
+|   |   |--- num__sender_reputation >  -1.729185
+|   |   |   |--- value: [-0.930125]
+|   |--- num__subject_length >  -0.025058
+|   |   |--- num__attachment_count <= 0.445415
+|   |   |   |--- value: [-0.190825]
+|   |   |--- num__attachment_count >  0.445415
+|   |   |   |--- value: [0.845250]
+|--- num__urgent_language_score >  0.799398
+|   |--- num__sender_reputation <= 0.126595
+|   |   |--- cat__dmarc_result_pass <= 0.500000
+|   |   |   |--- value: [1.490682]
+|   |   |--- cat__dmarc_result_pass >  0.500000
+|   |   |   |--- value: [0.714507]
+|   |--- num__sender_reputation >  0.126595
+|   |   |--- cat__dkim_result_none <= 0.500000
+|   |   |   |--- value: [-0.525137]
+|   |   |--- cat__dkim_result_none >  0.500000
+|   |   |   |--- value: [3.144540]
+
+stage	15
+|--- cat__dkim_result_pass <= 0.500000
+|   |--- num__urgent_language_score <= 0.053750
+|   |   |--- num__url_count <= -0.056774
+|   |   |   |--- value: [-0.852124]
+|   |   |--- num__url_count >  -0.056774
+|   |   |   |--- value: [0.694431]
+|   |--- num__urgent_language_score >  0.053750
+|   |   |--- num__sender_reputation <= 0.455939
+|   |   |   |--- value: [1.378600]
+|   |   |--- num__sender_reputation >  0.455939
+|   |   |   |--- value: [-0.197246]
+|--- cat__dkim_result_pass >  0.500000
+|   |--- num__suspicious_url_count <= 2.778682
+|   |   |--- num__attachment_count <= 0.445415
+|   |   |   |--- value: [-0.502160]
+|   |   |--- num__attachment_count >  0.445415
+|   |   |   |--- value: [0.345882]
+|   |--- num__suspicious_url_count >  2.778682
+|   |   |--- cat__sender_domain_secure-mail.example <= 0.500000
+|   |   |   |--- value: [1.377252]
+|   |   |--- cat__sender_domain_secure-mail.example >  0.500000
+|   |   |   |--- value: [-1.264176]
+
+stage	16
+|--- cat__dmarc_result_pass <= 0.500000
+|   |--- num__urgent_language_score <= -0.142473
+|   |   |--- num__sender_reputation <= -1.405569
+|   |   |   |--- value: [2.800652]
+|   |   |--- num__sender_reputation >  -1.405569
+|   |   |   |--- value: [-0.349125]
+|   |--- num__urgent_language_score >  -0.142473
+|   |   |--- num__sender_reputation <= 0.407253
+|   |   |   |--- value: [1.211052]
+|   |   |--- num__sender_reputation >  0.407253
+|   |   |   |--- value: [-0.357374]
+|--- cat__dmarc_result_pass >  0.500000
+|   |--- cat__spf_result_pass <= 0.500000
+|   |   |--- num__urgent_language_score <= 0.037590
+|   |   |   |--- value: [-0.352407]
+|   |   |--- num__urgent_language_score >  0.037590
+|   |   |   |--- value: [1.029452]
+|   |--- cat__spf_result_pass >  0.500000
+|   |   |--- num__subject_length <= -0.025058
+|   |   |   |--- value: [-0.858436]
+|   |   |--- num__subject_length >  -0.025058
+|   |   |   |--- value: [-0.066086]
+
+stage	17
+|--- num__suspicious_url_count <= 0.697705
+|   |--- num__has_shortened_url <= 1.181622
+|   |   |--- num__sender_reputation <= -0.159791
+|   |   |   |--- value: [0.083269]
+|   |   |--- num__sender_reputation >  -0.159791
+|   |   |   |--- value: [-0.646532]
+|   |--- num__has_shortened_url >  1.181622
+|   |   |--- num__subject_length <= 0.714367
+|   |   |   |--- value: [0.286490]
+|   |   |--- num__subject_length >  0.714367
+|   |   |   |--- value: [2.334097]
+|--- num__suspicious_url_count >  0.697705
+|   |--- num__sender_reputation <= 0.538991
+|   |   |--- num__subject_length <= 0.344654
+|   |   |   |--- value: [0.546620]
+|   |   |--- num__subject_length >  0.344654
+|   |   |   |--- value: [1.304712]
+|   |--- num__sender_reputation >  0.538991
+|   |   |--- cat__dmarc_result_fail <= 0.500000
+|   |   |   |--- value: [-0.922890]
+|   |   |--- cat__dmarc_result_fail >  0.500000
+|   |   |   |--- value: [0.847407]
+
+stage	18
+|--- cat__dkim_result_pass <= 0.500000
+|   |--- num__urgent_language_score <= -0.010888
+|   |   |--- num__attachment_count <= 4.209483
+|   |   |   |--- value: [-0.264149]
+|   |   |--- num__attachment_count >  4.209483
+|   |   |   |--- value: [5.472225]
+|   |--- num__urgent_language_score >  -0.010888
+|   |   |--- num__sender_reputation <= 0.455939
+|   |   |   |--- value: [1.230651]
+|   |   |--- num__sender_reputation >  0.455939
+|   |   |   |--- value: [-0.236069]
+|--- cat__dkim_result_pass >  0.500000
+|   |--- num__attachment_count <= 0.445415
+|   |   |--- num__sender_reputation <= -1.720593
+|   |   |   |--- value: [0.561764]
+|   |   |--- num__sender_reputation >  -1.720593
+|   |   |   |--- value: [-0.496528]
+|   |--- num__attachment_count >  0.445415
+|   |   |--- num__subject_length <= -0.025058
+|   |   |   |--- value: [-0.380676]
+|   |   |--- num__subject_length >  -0.025058
+|   |   |   |--- value: [0.737227]
+
+stage	19
+|--- cat__spf_result_pass <= 0.500000
+|   |--- num__urgent_language_score <= 0.037590
+|   |   |--- num__url_count <= 0.583931
+|   |   |   |--- value: [-0.540653]
+|   |   |--- num__url_count >  0.583931
+|   |   |   |--- value: [1.441583]
+|   |--- num__urgent_language_score >  0.037590
+|   |   |--- num__subject_length <= -1.134196
+|   |   |   |--- value: [-1.418344]
+|   |   |--- num__subject_length >  -1.134196
+|   |   |   |--- value: [1.123213]
+|--- cat__spf_result_pass >  0.500000
+|   |--- num__suspicious_url_count <= 0.697705
+|   |   |--- num__has_shortened_url <= 1.181622
+|   |   |   |--- value: [-0.472818]
+|   |   |--- num__has_shortened_url >  1.181622
+|   |   |   |--- value: [0.417335]
+|   |--- num__suspicious_url_count >  0.697705
+|   |   |--- num__subject_length <= 0.344654
+|   |   |   |--- value: [0.094180]
+|   |   |--- num__subject_length >  0.344654
+|   |   |   |--- value: [1.015902]
+
+stage	20
+|--- cat__dmarc_result_pass <= 0.500000
+|   |--- num__urgent_language_score <= -0.142473
+|   |   |--- num__subject_length <= 0.159798
+|   |   |   |--- value: [-1.094791]
+|   |   |--- num__subject_length >  0.159798
+|   |   |   |--- value: [0.706115]
+|   |--- num__urgent_language_score >  -0.142473
+|   |   |--- cat__sender_domain_offers.example <= 0.500000
+|   |   |   |--- value: [1.025367]
+|   |   |--- cat__sender_domain_offers.example >  0.500000
+|   |   |   |--- value: [-1.071787]
+|--- cat__dmarc_result_pass >  0.500000
+|   |--- cat__dkim_result_pass <= 0.500000
+|   |   |--- num__urgent_language_score <= 0.053750
+|   |   |   |--- value: [-0.314071]
+|   |   |--- num__urgent_language_score >  0.053750
+|   |   |   |--- value: [0.938877]
+|   |--- cat__dkim_result_pass >  0.500000
+|   |   |--- num__subject_length <= -0.025058
+|   |   |   |--- value: [-0.828700]
+|   |   |--- num__subject_length >  -0.025058
+|   |   |   |--- value: [-0.022255]
+
+stage	21
+|--- cat__spf_result_pass <= 0.500000
+|   |--- num__urgent_language_score <= 0.037590
+|   |   |--- num__url_count <= 0.583931
+|   |   |   |--- value: [-0.486755]
+|   |   |--- num__url_count >  0.583931
+|   |   |   |--- value: [1.241719]
+|   |--- num__urgent_language_score >  0.037590
+|   |   |--- cat__sender_domain_secure-mail.example <= 0.500000
+|   |   |   |--- value: [1.023952]
+|   |   |--- cat__sender_domain_secure-mail.example >  0.500000
+|   |   |   |--- value: [-1.367502]
+|--- cat__spf_result_pass >  0.500000
+|   |--- num__suspicious_url_count <= 0.697705
+|   |   |--- num__attachment_count <= 2.327449
+|   |   |   |--- value: [-0.369997]
+|   |   |--- num__attachment_count >  2.327449
+|   |   |   |--- value: [0.921550]
+|   |--- num__suspicious_url_count >  0.697705
+|   |   |--- num__sender_reputation <= 0.538991
+|   |   |   |--- value: [0.600365]
+|   |   |--- num__sender_reputation >  0.538991
+|   |   |   |--- value: [-0.768204]
+
+stage	22
+|--- num__urgent_language_score <= 0.799398
+|   |--- num__subject_length <= -0.025058
+|   |   |--- num__sender_reputation <= -1.729185
+|   |   |   |--- value: [0.562206]
+|   |   |--- num__sender_reputation >  -1.729185
+|   |   |   |--- value: [-0.869149]
+|   |--- num__subject_length >  -0.025058
+|   |   |--- num__url_count <= -0.056774
+|   |   |   |--- value: [-0.298141]
+|   |   |--- num__url_count >  -0.056774
+|   |   |   |--- value: [0.507923]
+|--- num__urgent_language_score >  0.799398
+|   |--- num__sender_reputation <= 0.126595
+|   |   |--- cat__sender_domain_service-desk.example <= 0.500000
+|   |   |   |--- value: [0.538693]
+|   |   |--- cat__sender_domain_service-desk.example >  0.500000
+|   |   |   |--- value: [1.597895]
+|   |--- num__sender_reputation >  0.126595
+|   |   |--- num__urgent_language_score <= 0.808632
+|   |   |   |--- value: [5.282888]
+|   |   |--- num__urgent_language_score >  0.808632
+|   |   |   |--- value: [-0.446495]
+
+stage	23
+|--- cat__dmarc_result_pass <= 0.500000
+|   |--- num__sender_reputation <= 0.407253
+|   |   |--- num__urgent_language_score <= -0.313303
+|   |   |   |--- value: [-0.115495]
+|   |   |--- num__urgent_language_score >  -0.313303
+|   |   |   |--- value: [0.962262]
+|   |--- num__sender_reputation >  0.407253
+|   |   |--- num__body_length <= -1.709336
+|   |   |   |--- value: [3.281486]
+|   |   |--- num__body_length >  -1.709336
+|   |   |   |--- value: [-0.471369]
+|--- cat__dmarc_result_pass >  0.500000
+|   |--- num__attachment_count <= 0.445415
+|   |   |--- num__sender_reputation <= -1.780734
+|   |   |   |--- value: [0.523899]
+|   |   |--- num__sender_reputation >  -1.780734
+|   |   |   |--- value: [-0.443031]
+|   |--- num__attachment_count >  0.445415
+|   |   |--- num__subject_length <= -0.025058
+|   |   |   |--- value: [-0.408098]
+|   |   |--- num__subject_length >  -0.025058
+|   |   |   |--- value: [0.666538]
+
+stage	24
+|--- cat__dkim_result_pass <= 0.500000
+|   |--- num__urgent_language_score <= -0.320229
+|   |   |--- num__suspicious_url_count <= 0.697705
+|   |   |   |--- value: [-0.796409]
+|   |   |--- num__suspicious_url_count >  0.697705
+|   |   |   |--- value: [0.899983]
+|   |--- num__urgent_language_score >  -0.320229
+|   |   |--- num__subject_length <= -1.134196
+|   |   |   |--- value: [-1.385286]
+|   |   |--- num__subject_length >  -1.134196
+|   |   |   |--- value: [0.963756]
+|--- cat__dkim_result_pass >  0.500000
+|   |--- num__attachment_count <= 2.327449
+|   |   |--- num__suspicious_url_count <= 2.778682
+|   |   |   |--- value: [-0.264910]
+|   |   |--- num__suspicious_url_count >  2.778682
+|   |   |   |--- value: [0.997169]
+|   |--- num__attachment_count >  2.327449
+|   |   |--- num__subject_length <= 0.714367
+|   |   |   |--- value: [0.459645]
+|   |   |--- num__subject_length >  0.714367
+|   |   |   |--- value: [1.927806]
+
+stage	25
+|--- cat__spf_result_pass <= 0.500000
+|   |--- num__urgent_language_score <= -0.313303
+|   |   |--- num__url_count <= 0.583931
+|   |   |   |--- value: [-0.614559]
+|   |   |--- num__url_count >  0.583931
+|   |   |   |--- value: [1.179560]
+|   |--- num__urgent_language_score >  -0.313303
+|   |   |--- num__subject_length <= -1.134196
+|   |   |   |--- value: [-1.237804]
+|   |   |--- num__subject_length >  -1.134196
+|   |   |   |--- value: [0.900714]
+|--- cat__spf_result_pass >  0.500000
+|   |--- num__subject_length <= -0.025058
+|   |   |--- num__sender_reputation <= -1.941110
+|   |   |   |--- value: [0.662146]
+|   |   |--- num__sender_reputation >  -1.941110
+|   |   |   |--- value: [-0.778665]
+|   |--- num__subject_length >  -0.025058
+|   |   |--- num__sender_reputation <= 0.126595
+|   |   |   |--- value: [0.373312]
+|   |   |--- num__sender_reputation >  0.126595
+|   |   |   |--- value: [-0.337059]
+
+stage	26
+|--- cat__dmarc_result_pass <= 0.500000
+|   |--- num__urgent_language_score <= 0.573164
+|   |   |--- num__subject_length <= 0.159798
+|   |   |   |--- value: [-0.418557]
+|   |   |--- num__subject_length >  0.159798
+|   |   |   |--- value: [0.626051]
+|   |--- num__urgent_language_score >  0.573164
+|   |   |--- cat__sender_domain_offers.example <= 0.500000
+|   |   |   |--- value: [1.070505]
+|   |   |--- cat__sender_domain_offers.example >  0.500000
+|   |   |   |--- value: [-1.557210]
+|--- cat__dmarc_result_pass >  0.500000
+|   |--- num__attachment_count <= 0.445415
+|   |   |--- num__suspicious_url_count <= 2.778682
+|   |   |   |--- value: [-0.379837]
+|   |   |--- num__suspicious_url_count >  2.778682
+|   |   |   |--- value: [0.742332]
+|   |--- num__attachment_count >  0.445415
+|   |   |--- num__subject_length <= -0.025058
+|   |   |   |--- value: [-0.374287]
+|   |   |--- num__subject_length >  -0.025058
+|   |   |   |--- value: [0.562011]
+
+stage	27
+|--- cat__dkim_result_pass <= 0.500000
+|   |--- num__urgent_language_score <= -0.320229
+|   |   |--- num__suspicious_url_count <= 0.697705
+|   |   |   |--- value: [-0.751325]
+|   |   |--- num__suspicious_url_count >  0.697705
+|   |   |   |--- value: [0.757158]
+|   |--- num__urgent_language_score >  -0.320229
+|   |   |--- num__urgent_language_score <= -0.264824
+|   |   |   |--- value: [3.022756]
+|   |   |--- num__urgent_language_score >  -0.264824
+|   |   |   |--- value: [0.735685]
+|--- cat__dkim_result_pass >  0.500000
+|   |--- num__attachment_count <= 2.327449
+|   |   |--- num__sender_reputation <= -1.712002
+|   |   |   |--- value: [0.482976]
+|   |   |--- num__sender_reputation >  -1.712002
+|   |   |   |--- value: [-0.262788]
+|   |--- num__attachment_count >  2.327449
+|   |   |--- num__subject_length <= 0.714367
+|   |   |   |--- value: [0.378337]
+|   |   |--- num__subject_length >  0.714367
+|   |   |   |--- value: [1.660548]
+
+stage	28
+|--- cat__spf_result_pass <= 0.500000
+|   |--- num__urgent_language_score <= -0.313303
+|   |   |--- num__url_count <= 0.583931
+|   |   |   |--- value: [-0.567161]
+|   |   |--- num__url_count >  0.583931
+|   |   |   |--- value: [1.067056]
+|   |--- num__urgent_language_score >  -0.313303
+|   |   |--- cat__sender_domain_secure-mail.example <= 0.500000
+|   |   |   |--- value: [0.817690]
+|   |   |--- cat__sender_domain_secure-mail.example >  0.500000
+|   |   |   |--- value: [-1.298384]
+|--- cat__spf_result_pass >  0.500000
+|   |--- num__subject_length <= -0.025058
+|   |   |--- num__urgent_language_score <= 1.600451
+|   |   |   |--- value: [-0.747438]
+|   |   |--- num__urgent_language_score >  1.600451
+|   |   |   |--- value: [0.771570]
+|   |--- num__subject_length >  -0.025058
+|   |   |--- num__suspicious_url_count <= 0.697705
+|   |   |   |--- value: [-0.028037]
+|   |   |--- num__suspicious_url_count >  0.697705
+|   |   |   |--- value: [0.549289]
+
+stage	29
+|--- num__sender_reputation <= -0.142607
+|   |--- num__attachment_count <= 0.445415
+|   |   |--- cat__dkim_result_fail <= 0.500000
+|   |   |   |--- value: [-0.067050]
+|   |   |--- cat__dkim_result_fail >  0.500000
+|   |   |   |--- value: [1.000883]
+|   |--- num__attachment_count >  0.445415
+|   |   |--- cat__sender_domain_offers.example <= 0.500000
+|   |   |   |--- value: [0.816120]
+|   |   |--- cat__sender_domain_offers.example >  0.500000
+|   |   |   |--- value: [-1.053042]
+|--- num__sender_reputation >  -0.142607
+|   |--- num__attachment_count <= 4.209483
+|   |   |--- num__has_shortened_url <= 1.181622
+|   |   |   |--- value: [-0.424365]
+|   |   |--- num__has_shortened_url >  1.181622
+|   |   |   |--- value: [0.477347]
+|   |--- num__attachment_count >  4.209483
+|   |   |--- cat__sender_domain_corp-notify.example <= 0.500000
+|   |   |   |--- value: [3.139872]
+|   |   |--- cat__sender_domain_corp-notify.example >  0.500000
+|   |   |   |--- value: [-1.161053]
+
+stage	30
+|--- cat__dmarc_result_pass <= 0.500000
+|   |--- num__sender_reputation <= 0.407253
+|   |   |--- cat__sender_domain_offers.example <= 0.500000
+|   |   |   |--- value: [0.761640]
+|   |   |--- cat__sender_domain_offers.example >  0.500000
+|   |   |   |--- value: [-0.983470]
+|   |--- num__sender_reputation >  0.407253
+|   |   |--- num__body_length <= 0.340323
+|   |   |   |--- value: [-0.977992]
+|   |   |--- num__body_length >  0.340323
+|   |   |   |--- value: [0.560279]
+|--- cat__dmarc_result_pass >  0.500000
+|   |--- num__attachment_count <= 0.445415
+|   |   |--- num__suspicious_url_count <= 2.778682
+|   |   |   |--- value: [-0.334328]
+|   |   |--- num__suspicious_url_count >  2.778682
+|   |   |   |--- value: [0.650230]
+|   |--- num__attachment_count >  0.445415
+|   |   |--- num__has_shortened_url <= 1.181622
+|   |   |   |--- value: [0.080686]
+|   |   |--- num__has_shortened_url >  1.181622
+|   |   |   |--- value: [0.995975]
+
+stage	31
+|--- cat__spf_result_pass <= 0.500000
+|   |--- num__urgent_language_score <= -1.040484
+|   |   |--- num__suspicious_url_count <= 0.697705
+|   |   |   |--- value: [-1.101543]
+|   |   |--- num__suspicious_url_count >  0.697705
+|   |   |   |--- value: [-1.262223]
+|   |--- num__urgent_language_score >  -1.040484
+|   |   |--- num__subject_length <= -1.134196
+|   |   |   |--- value: [-1.161845]
+|   |   |--- num__subject_length >  -1.134196
+|   |   |   |--- value: [0.703926]
+|--- cat__spf_result_pass >  0.500000
+|   |--- num__subject_length <= -0.025058
+|   |   |--- num__sender_reputation <= -1.941110
+|   |   |   |--- value: [0.595290]
+|   |   |--- num__sender_reputation >  -1.941110
+|   |   |   |--- value: [-0.721614]
+|   |--- num__subject_length >  -0.025058
+|   |   |--- num__sender_reputation <= 0.126595
+|   |   |   |--- value: [0.294367]
+|   |   |--- num__sender_reputation >  0.126595
+|   |   |   |--- value: [-0.278702]
+
+stage	32
+|--- cat__dkim_result_pass <= 0.500000
+|   |--- num__urgent_language_score <= -0.010888
+|   |   |--- num__subject_length <= 0.529511
+|   |   |   |--- value: [-0.641744]
+|   |   |--- num__subject_length >  0.529511
+|   |   |   |--- value: [0.755709]
+|   |--- num__urgent_language_score >  -0.010888
+|   |   |--- cat__sender_domain_rewards.example <= 0.500000
+|   |   |   |--- value: [0.826383]
+|   |   |--- cat__sender_domain_rewards.example >  0.500000
+|   |   |   |--- value: [-1.249837]
+|--- cat__dkim_result_pass >  0.500000
+|   |--- num__suspicious_url_count <= 2.778682
+|   |   |--- num__subject_length <= -0.025058
+|   |   |   |--- value: [-0.634463]
+|   |   |--- num__subject_length >  -0.025058
+|   |   |   |--- value: [0.039877]
+|   |--- num__suspicious_url_count >  2.778682
+|   |   |--- cat__sender_domain_offers.example <= 0.500000
+|   |   |   |--- value: [0.977530]
+|   |   |--- cat__sender_domain_offers.example >  0.500000
+|   |   |   |--- value: [-1.991669]
+
+stage	33
+|--- cat__spf_result_pass <= 0.500000
+|   |--- num__urgent_language_score <= -1.040484
+|   |   |--- num__suspicious_url_count <= 0.697705
+|   |   |   |--- value: [-1.090809]
+|   |   |--- num__suspicious_url_count >  0.697705
+|   |   |   |--- value: [-1.225415]
+|   |--- num__urgent_language_score >  -1.040484
+|   |   |--- cat__sender_domain_secure-mail.example <= 0.500000
+|   |   |   |--- value: [0.639177]
+|   |   |--- cat__sender_domain_secure-mail.example >  0.500000
+|   |   |   |--- value: [-1.235052]
+|--- cat__spf_result_pass >  0.500000
+|   |--- cat__dmarc_result_pass <= 0.500000
+|   |   |--- num__url_count <= 3.146751
+|   |   |   |--- value: [0.354117]
+|   |   |--- num__url_count >  3.146751
+|   |   |   |--- value: [-2.555158]
+|   |--- cat__dmarc_result_pass >  0.500000
+|   |   |--- num__sender_reputation <= -2.207449
+|   |   |   |--- value: [0.565549]
+|   |   |--- num__sender_reputation >  -2.207449
+|   |   |   |--- value: [-0.246726]
+
+stage	34
+|--- num__urgent_language_score <= 0.573164
+|   |--- num__url_count <= -0.056774
+|   |   |--- num__has_shortened_url <= 1.181622
+|   |   |   |--- value: [-0.654553]
+|   |   |--- num__has_shortened_url >  1.181622
+|   |   |   |--- value: [0.559886]
+|   |--- num__url_count >  -0.056774
+|   |   |--- num__subject_length <= -0.025058
+|   |   |   |--- value: [-0.642942]
+|   |   |--- num__subject_length >  -0.025058
+|   |   |   |--- value: [0.504360]
+|--- num__urgent_language_score >  0.573164
+|   |--- cat__sender_domain_service-desk.example <= 0.500000
+|   |   |--- cat__sender_domain_hr-updates.example <= 0.500000
+|   |   |   |--- value: [-0.001978]
+|   |   |--- cat__sender_domain_hr-updates.example >  0.500000
+|   |   |   |--- value: [1.092827]
+|   |--- cat__sender_domain_service-desk.example >  0.500000
+|   |   |--- num__sender_reputation <= 0.160962
+|   |   |   |--- value: [1.441416]
+|   |   |--- num__sender_reputation >  0.160962
+|   |   |   |--- value: [0.219196]
+
+stage	35
+|--- num__sender_reputation <= 0.126595
+|   |--- cat__sender_domain_offers.example <= 0.500000
+|   |   |--- num__urgent_language_score <= 0.573164
+|   |   |   |--- value: [0.016481]
+|   |   |--- num__urgent_language_score >  0.573164
+|   |   |   |--- value: [0.570115]
+|   |--- cat__sender_domain_offers.example >  0.500000
+|   |   |--- num__sender_reputation <= -1.170732
+|   |   |   |--- value: [-1.665350]
+|   |   |--- num__sender_reputation >  -1.170732
+|   |   |   |--- value: [-0.702018]
+|--- num__sender_reputation >  0.126595
+|   |--- num__attachment_count <= 4.209483
+|   |   |--- num__subject_length <= 1.268936
+|   |   |   |--- value: [-0.293866]
+|   |   |--- num__subject_length >  1.268936
+|   |   |   |--- value: [-1.014160]
+|   |--- num__attachment_count >  4.209483
+|   |   |--- cat__sender_domain_hr-updates.example <= 0.500000
+|   |   |   |--- value: [3.393465]
+|   |   |--- cat__sender_domain_hr-updates.example >  0.500000
+|   |   |   |--- value: [2.135135]
+
+stage	36
+|--- cat__dkim_result_pass <= 0.500000
+|   |--- num__urgent_language_score <= -0.320229
+|   |   |--- cat__dmarc_result_pass <= 0.500000
+|   |   |   |--- value: [0.939507]
+|   |   |--- cat__dmarc_result_pass >  0.500000
+|   |   |   |--- value: [-0.575284]
+|   |--- num__urgent_language_score >  -0.320229
+|   |   |--- num__urgent_language_score <= -0.264824
+|   |   |   |--- value: [2.136946]
+|   |   |--- num__urgent_language_score >  -0.264824
+|   |   |   |--- value: [0.538785]
+|--- cat__dkim_result_pass >  0.500000
+|   |--- num__attachment_count <= 2.327449
+|   |   |--- cat__sender_domain_support-portal.example <= 0.500000
+|   |   |   |--- value: [-0.222238]
+|   |   |--- cat__sender_domain_support-portal.example >  0.500000
+|   |   |   |--- value: [0.494780]
+|   |--- num__attachment_count >  2.327449
+|   |   |--- cat__spf_result_softfail <= 0.500000
+|   |   |   |--- value: [0.839345]
+|   |   |--- cat__spf_result_softfail >  0.500000
+|   |   |   |--- value: [-2.776304]
+
+stage	37
+|--- cat__spf_result_pass <= 0.500000
+|   |--- num__urgent_language_score <= -1.040484
+|   |   |--- num__suspicious_url_count <= 0.697705
+|   |   |   |--- value: [-1.076519]
+|   |   |--- num__suspicious_url_count >  0.697705
+|   |   |   |--- value: [-1.202012]
+|   |--- num__urgent_language_score >  -1.040484
+|   |   |--- num__url_count <= -0.697479
+|   |   |   |--- value: [-0.190057]
+|   |   |--- num__url_count >  -0.697479
+|   |   |   |--- value: [0.669442]
+|--- cat__spf_result_pass >  0.500000
+|   |--- num__subject_length <= -0.025058
+|   |   |--- num__urgent_language_score <= 2.078312
+|   |   |   |--- value: [-0.628731]
+|   |   |--- num__urgent_language_score >  2.078312
+|   |   |   |--- value: [1.051990]
+|   |--- num__subject_length >  -0.025058
+|   |   |--- num__sender_reputation <= 1.249228
+|   |   |   |--- value: [0.154220]
+|   |   |--- num__sender_reputation >  1.249228
+|   |   |   |--- value: [-0.922492]
+
+stage	38
+|--- cat__dmarc_result_pass <= 0.500000
+|   |--- num__urgent_language_score <= -0.313303
+|   |   |--- num__url_count <= -0.056774
+|   |   |   |--- value: [-1.106768]
+|   |   |--- num__url_count >  -0.056774
+|   |   |   |--- value: [0.783056]
+|   |--- num__urgent_language_score >  -0.313303
+|   |   |--- num__url_count <= 3.146751
+|   |   |   |--- value: [0.600280]
+|   |   |--- num__url_count >  3.146751
+|   |   |   |--- value: [-2.319616]
+|--- cat__dmarc_result_pass >  0.500000
+|   |--- num__attachment_count <= 0.445415
+|   |   |--- num__suspicious_url_count <= 2.778682
+|   |   |   |--- value: [-0.285754]
+|   |   |--- num__suspicious_url_count >  2.778682
+|   |   |   |--- value: [0.505182]
+|   |--- num__attachment_count >  0.445415
+|   |   |--- num__has_shortened_url <= 1.181622
+|   |   |   |--- value: [0.082987]
+|   |   |--- num__has_shortened_url >  1.181622
+|   |   |   |--- value: [0.808601]
+
+stage	39
+|--- cat__spf_result_fail <= 0.500000
+|   |--- num__suspicious_url_count <= 0.697705
+|   |   |--- cat__sender_domain_notify-gateway.example <= 0.500000
+|   |   |   |--- value: [-0.237173]
+|   |   |--- cat__sender_domain_notify-gateway.example >  0.500000
+|   |   |   |--- value: [0.438162]
+|   |--- num__suspicious_url_count >  0.697705
+|   |   |--- cat__sender_domain_offers.example <= 0.500000
+|   |   |   |--- value: [0.403731]
+|   |   |--- cat__sender_domain_offers.example >  0.500000
+|   |   |   |--- value: [-1.442183]
+|--- cat__spf_result_fail >  0.500000
+|   |--- num__urgent_language_score <= -1.031249
+|   |   |--- num__suspicious_url_count <= 0.697705
+|   |   |   |--- value: [-1.064492]
+|   |   |--- num__suspicious_url_count >  0.697705
+|   |   |   |--- value: [-1.174152]
+|   |--- num__urgent_language_score >  -1.031249
+|   |   |--- num__urgent_language_score <= -0.871962
+|   |   |   |--- value: [3.951939]
+|   |   |--- num__urgent_language_score >  -0.871962
+|   |   |   |--- value: [0.511624]
+
+stage	40
+|--- cat__dkim_result_pass <= 0.500000
+|   |--- num__urgent_language_score <= -0.010888
+|   |   |--- num__subject_length <= 0.529511
+|   |   |   |--- value: [-0.608036]
+|   |   |--- num__subject_length >  0.529511
+|   |   |   |--- value: [0.653832]
+|   |--- num__urgent_language_score >  -0.010888
+|   |   |--- cat__sender_domain_rewards.example <= 0.500000
+|   |   |   |--- value: [0.680122]
+|   |   |--- cat__sender_domain_rewards.example >  0.500000
+|   |   |   |--- value: [-1.197370]
+|--- cat__dkim_result_pass >  0.500000
+|   |--- cat__sender_domain_support-portal.example <= 0.500000
+|   |   |--- num__subject_length <= 0.344654
+|   |   |   |--- value: [-0.436476]
+|   |   |--- num__subject_length >  0.344654
+|   |   |   |--- value: [0.108990]
+|   |--- cat__sender_domain_support-portal.example >  0.500000
+|   |   |--- num__has_shortened_url <= 1.181622
+|   |   |   |--- value: [0.267394]
+|   |   |--- num__has_shortened_url >  1.181622
+|   |   |   |--- value: [1.444926]
+
+stage	41
+|--- num__attachment_count <= 0.445415
+|   |--- num__sender_reputation <= -1.700546
+|   |   |--- cat__sender_domain_mailer.example <= 0.500000
+|   |   |   |--- value: [0.557254]
+|   |   |--- cat__sender_domain_mailer.example >  0.500000
+|   |   |   |--- value: [-1.718339]
+|   |--- num__sender_reputation >  -1.700546
+|   |   |--- num__sender_reputation <= -1.551626
+|   |   |   |--- value: [-1.296125]
+|   |   |--- num__sender_reputation >  -1.551626
+|   |   |   |--- value: [-0.177695]
+|--- num__attachment_count >  0.445415
+|   |--- num__has_shortened_url <= 1.181622
+|   |   |--- num__sender_reputation <= -0.491998
+|   |   |   |--- value: [0.574510]
+|   |   |--- num__sender_reputation >  -0.491998
+|   |   |   |--- value: [-0.124481]
+|   |--- num__has_shortened_url >  1.181622
+|   |   |--- num__url_count <= -0.056774
+|   |   |   |--- value: [1.737957]
+|   |   |--- num__url_count >  -0.056774
+|   |   |   |--- value: [0.344871]
+
+stage	42
+|--- cat__dmarc_result_pass <= 0.500000
+|   |--- cat__sender_domain_mailer.example <= 0.500000
+|   |   |--- num__urgent_language_score <= -0.315612
+|   |   |   |--- value: [-0.161917]
+|   |   |--- num__urgent_language_score >  -0.315612
+|   |   |   |--- value: [0.587098]
+|   |--- cat__sender_domain_mailer.example >  0.500000
+|   |   |--- num__suspicious_url_count <= 0.697705
+|   |   |   |--- value: [-1.323016]
+|   |   |--- num__suspicious_url_count >  0.697705
+|   |   |   |--- value: [1.375140]
+|--- cat__dmarc_result_pass >  0.500000
+|   |--- num__subject_length <= -0.025058
+|   |   |--- num__sender_reputation <= -1.832284
+|   |   |   |--- value: [0.596838]
+|   |   |--- num__sender_reputation >  -1.832284
+|   |   |   |--- value: [-0.643484]
+|   |--- num__subject_length >  -0.025058
+|   |   |--- num__urgent_language_score <= -1.259792
+|   |   |   |--- value: [-1.096775]
+|   |   |--- num__urgent_language_score >  -1.259792
+|   |   |   |--- value: [0.139057]
+
+stage	43
+|--- num__sender_reputation <= 0.453075
+|   |--- cat__sender_domain_support-portal.example <= 0.500000
+|   |   |--- cat__sender_domain_service-desk.example <= 0.500000
+|   |   |   |--- value: [-0.057477]
+|   |   |--- cat__sender_domain_service-desk.example >  0.500000
+|   |   |   |--- value: [0.678130]
+|   |--- cat__sender_domain_support-portal.example >  0.500000
+|   |   |--- num__url_count <= 0.583931
+|   |   |   |--- value: [0.375528]
+|   |   |--- num__url_count >  0.583931
+|   |   |   |--- value: [1.245681]
+|--- num__sender_reputation >  0.453075
+|   |--- num__attachment_count <= 4.209483
+|   |   |--- num__subject_length <= 1.268936
+|   |   |   |--- value: [-0.334530]
+|   |   |--- num__subject_length >  1.268936
+|   |   |   |--- value: [-1.141321]
+|   |--- num__attachment_count >  4.209483
+|   |   |--- cat__dkim_result_pass <= 0.500000
+|   |   |   |--- value: [1.812451]
+|   |   |--- cat__dkim_result_pass >  0.500000
+|   |   |   |--- value: [2.328363]
+
+stage	44
+|--- cat__spf_result_pass <= 0.500000
+|   |--- num__urgent_language_score <= 0.226888
+|   |   |--- num__subject_length <= 0.714367
+|   |   |   |--- value: [-0.496056]
+|   |   |--- num__subject_length >  0.714367
+|   |   |   |--- value: [0.630879]
+|   |--- num__urgent_language_score >  0.226888
+|   |   |--- num__body_length <= -1.779139
+|   |   |   |--- value: [3.563457]
+|   |   |--- num__body_length >  -1.779139
+|   |   |   |--- value: [0.549518]
+|--- cat__spf_result_pass >  0.500000
+|   |--- num__subject_length <= -0.025058
+|   |   |--- num__urgent_language_score <= 1.600451
+|   |   |   |--- value: [-0.635985]
+|   |   |--- num__urgent_language_score >  1.600451
+|   |   |   |--- value: [0.604458]
+|   |--- num__subject_length >  -0.025058
+|   |   |--- num__urgent_language_score <= -1.259792
+|   |   |   |--- value: [-1.087815]
+|   |   |--- num__urgent_language_score >  -1.259792
+|   |   |   |--- value: [0.126257]
+
+stage	45
+|--- num__attachment_count <= 0.445415
+|   |--- num__sender_reputation <= -1.700546
+|   |   |--- cat__sender_domain_mailer.example <= 0.500000
+|   |   |   |--- value: [0.475037]
+|   |   |--- cat__sender_domain_mailer.example >  0.500000
+|   |   |   |--- value: [-1.642186]
+|   |--- num__sender_reputation >  -1.700546
+|   |   |--- num__sender_reputation <= -1.551626
+|   |   |   |--- value: [-1.196433]
+|   |   |--- num__sender_reputation >  -1.551626
+|   |   |   |--- value: [-0.152756]
+|--- num__attachment_count >  0.445415
+|   |--- num__subject_length <= 0.714367
+|   |   |--- num__sender_reputation <= -0.122560
+|   |   |   |--- value: [0.321659]
+|   |   |--- num__sender_reputation >  -0.122560
+|   |   |   |--- value: [-0.301208]
+|   |--- num__subject_length >  0.714367
+|   |   |--- num__subject_length <= 1.268936
+|   |   |   |--- value: [0.948111]
+|   |   |--- num__subject_length >  1.268936
+|   |   |   |--- value: [-0.194144]
+
+stage	46
+|--- cat__dkim_result_pass <= 0.500000
+|   |--- num__sender_reputation <= -0.211340
+|   |   |--- num__sender_reputation <= -0.219932
+|   |   |   |--- value: [0.604117]
+|   |   |--- num__sender_reputation >  -0.219932
+|   |   |   |--- value: [10.157844]
+|   |--- num__sender_reputation >  -0.211340
+|   |   |--- cat__spf_result_pass <= 0.500000
+|   |   |   |--- value: [1.035228]
+|   |   |--- cat__spf_result_pass >  0.500000
+|   |   |   |--- value: [-0.333125]
+|--- cat__dkim_result_pass >  0.500000
+|   |--- num__subject_length <= 1.268936
+|   |   |--- num__subject_length <= 1.084080
+|   |   |   |--- value: [-0.094676]
+|   |   |--- num__subject_length >  1.084080
+|   |   |   |--- value: [0.816247]
+|   |--- num__subject_length >  1.268936
+|   |   |--- num__has_shortened_url <= 1.181622
+|   |   |   |--- value: [-0.748157]
+|   |   |--- num__has_shortened_url >  1.181622
+|   |   |   |--- value: [1.338265]
+
+stage	47
+|--- cat__dmarc_result_pass <= 0.500000
+|   |--- cat__sender_domain_mailer.example <= 0.500000
+|   |   |--- num__subject_length <= 0.159798
+|   |   |   |--- value: [0.139673]
+|   |   |--- num__subject_length >  0.159798
+|   |   |   |--- value: [0.625233]
+|   |--- cat__sender_domain_mailer.example >  0.500000
+|   |   |--- num__suspicious_url_count <= 0.697705
+|   |   |   |--- value: [-1.286478]
+|   |   |--- num__suspicious_url_count >  0.697705
+|   |   |   |--- value: [1.307751]
+|--- cat__dmarc_result_pass >  0.500000
+|   |--- cat__sender_domain_support-portal.example <= 0.500000
+|   |   |--- num__urgent_language_score <= 1.773589
+|   |   |   |--- value: [-0.100609]
+|   |   |--- num__urgent_language_score >  1.773589
+|   |   |   |--- value: [-0.660729]
+|   |--- cat__sender_domain_support-portal.example >  0.500000
+|   |   |--- num__has_shortened_url <= 1.181622
+|   |   |   |--- value: [0.209057]
+|   |   |--- num__has_shortened_url >  1.181622
+|   |   |   |--- value: [1.569536]
+
+stage	48
+|--- num__sender_reputation <= 0.579085
+|   |--- cat__sender_domain_offers.example <= 0.500000
+|   |   |--- num__urgent_language_score <= 0.573164
+|   |   |   |--- value: [-0.000217]
+|   |   |--- num__urgent_language_score >  0.573164
+|   |   |   |--- value: [0.389903]
+|   |--- cat__sender_domain_offers.example >  0.500000
+|   |   |--- num__sender_reputation <= -1.116319
+|   |   |   |--- value: [-1.532480]
+|   |   |--- num__sender_reputation >  -1.116319
+|   |   |   |--- value: [-0.480556]
+|--- num__sender_reputation >  0.579085
+|   |--- num__attachment_count <= 4.209483
+|   |   |--- cat__spf_result_softfail <= 0.500000
+|   |   |   |--- value: [-0.400716]
+|   |   |--- cat__spf_result_softfail >  0.500000
+|   |   |   |--- value: [-1.263349]
+|   |--- num__attachment_count >  4.209483
+|   |   |--- num__body_length <= 1.146226
+|   |   |   |--- value: [1.879950]
+|   |   |--- num__body_length >  1.146226
+|   |   |   |--- value: [1.668526]
+
+stage	49
+|--- num__subject_length <= -0.025058
+|   |--- num__sender_reputation <= -1.686227
+|   |   |--- num__subject_length <= -1.134196
+|   |   |   |--- value: [-1.837667]
+|   |   |--- num__subject_length >  -1.134196
+|   |   |   |--- value: [0.670862]
+|   |--- num__sender_reputation >  -1.686227
+|   |   |--- num__sender_reputation <= -1.517259
+|   |   |   |--- value: [-1.107768]
+|   |   |--- num__sender_reputation >  -1.517259
+|   |   |   |--- value: [-0.458779]
+|--- num__subject_length >  -0.025058
+|   |--- num__subject_length <= 1.268936
+|   |   |--- num__urgent_language_score <= -1.262100
+|   |   |   |--- value: [-1.086116]
+|   |   |--- num__urgent_language_score >  -1.262100
+|   |   |   |--- value: [0.271308]
+|   |--- num__subject_length >  1.268936
+|   |   |--- num__has_shortened_url <= 1.181622
+|   |   |   |--- value: [-0.605420]
+|   |   |--- num__has_shortened_url >  1.181622
+|   |   |   |--- value: [1.267021]
+
+stage	50
+|--- cat__spf_result_fail <= 0.500000
+|   |--- num__suspicious_url_count <= 0.697705
+|   |   |--- cat__sender_domain_notify-gateway.example <= 0.500000
+|   |   |   |--- value: [-0.207236]
+|   |   |--- cat__sender_domain_notify-gateway.example >  0.500000
+|   |   |   |--- value: [0.438762]
+|   |--- num__suspicious_url_count >  0.697705
+|   |   |--- cat__sender_domain_offers.example <= 0.500000
+|   |   |   |--- value: [0.338739]
+|   |   |--- cat__sender_domain_offers.example >  0.500000
+|   |   |   |--- value: [-1.347245]
+|--- cat__spf_result_fail >  0.500000
+|   |--- num__attachment_count <= 0.445415
+|   |   |--- num__subject_length <= 0.714367
+|   |   |   |--- value: [0.454004]
+|   |   |--- num__subject_length >  0.714367
+|   |   |   |--- value: [-0.587095]
+|   |--- num__attachment_count >  0.445415
+|   |   |--- num__sender_reputation <= 0.624907
+|   |   |   |--- value: [0.679449]
+|   |   |--- num__sender_reputation >  0.624907
+|   |   |   |--- value: [1.663395]
+
+stage	51
+|--- num__attachment_count <= 0.445415
+|   |--- num__url_count <= 2.506046
+|   |   |--- num__suspicious_url_count <= 2.778682
+|   |   |   |--- value: [-0.114278]
+|   |   |--- num__suspicious_url_count >  2.778682
+|   |   |   |--- value: [0.769025]
+|   |--- num__url_count >  2.506046
+|   |   |--- cat__dmarc_result_none <= 0.500000
+|   |   |   |--- value: [-0.917058]
+|   |   |--- cat__dmarc_result_none >  0.500000
+|   |   |   |--- value: [-1.872713]
+|--- num__attachment_count >  0.445415
+|   |--- num__subject_length <= 0.714367
+|   |   |--- num__sender_reputation <= -0.245706
+|   |   |   |--- value: [0.302822]
+|   |   |--- num__sender_reputation >  -0.245706
+|   |   |   |--- value: [-0.233392]
+|   |--- num__subject_length >  0.714367
+|   |   |--- num__urgent_language_score <= -0.786548
+|   |   |   |--- value: [-0.911381]
+|   |   |--- num__urgent_language_score >  -0.786548
+|   |   |   |--- value: [0.722016]
+
+stage	52
+|--- cat__dkim_result_pass <= 0.500000
+|   |--- cat__sender_domain_corp-notify.example <= 0.500000
+|   |   |--- num__sender_reputation <= -0.211340
+|   |   |   |--- value: [0.677256]
+|   |   |--- num__sender_reputation >  -0.211340
+|   |   |   |--- value: [0.054395]
+|   |--- cat__sender_domain_corp-notify.example >  0.500000
+|   |   |--- num__urgent_language_score <= 1.510419
+|   |   |   |--- value: [-0.806444]
+|   |   |--- num__urgent_language_score >  1.510419
+|   |   |   |--- value: [-3.489769]
+|--- cat__dkim_result_pass >  0.500000
+|   |--- num__attachment_count <= 2.327449
+|   |   |--- num__subject_length <= 1.268936
+|   |   |   |--- value: [-0.052850]
+|   |   |--- num__subject_length >  1.268936
+|   |   |   |--- value: [-0.563601]
+|   |--- num__attachment_count >  2.327449
+|   |   |--- cat__spf_result_softfail <= 0.500000
+|   |   |   |--- value: [0.628771]
+|   |   |--- cat__spf_result_softfail >  0.500000
+|   |   |   |--- value: [-2.483176]
+
+stage	53
+|--- cat__spf_result_pass <= 0.500000
+|   |--- cat__sender_domain_secure-mail.example <= 0.500000
+|   |   |--- num__urgent_language_score <= -1.040484
+|   |   |   |--- value: [-1.061603]
+|   |   |--- num__urgent_language_score >  -1.040484
+|   |   |   |--- value: [0.435996]
+|   |--- cat__sender_domain_secure-mail.example >  0.500000
+|   |   |--- num__urgent_language_score <= 0.171484
+|   |   |   |--- value: [-1.115435]
+|   |   |--- num__urgent_language_score >  0.171484
+|   |   |   |--- value: [-1.313520]
+|--- cat__spf_result_pass >  0.500000
+|   |--- cat__sender_domain_offers.example <= 0.500000
+|   |   |--- num__suspicious_url_count <= 2.778682
+|   |   |   |--- value: [-0.054366]
+|   |   |--- num__suspicious_url_count >  2.778682
+|   |   |   |--- value: [0.703610]
+|   |--- cat__sender_domain_offers.example >  0.500000
+|   |   |--- num__sender_reputation <= -1.116319
+|   |   |   |--- value: [-1.427769]
+|   |   |--- num__sender_reputation >  -1.116319
+|   |   |   |--- value: [-0.541484]
+
+stage	54
+|--- num__subject_length <= -0.025058
+|   |--- num__sender_reputation <= -1.686227
+|   |   |--- num__subject_length <= -1.134196
+|   |   |   |--- value: [-1.704820]
+|   |   |--- num__subject_length >  -1.134196
+|   |   |   |--- value: [0.625030]
+|   |--- num__sender_reputation >  -1.686227
+|   |   |--- num__sender_reputation <= -1.517259
+|   |   |   |--- value: [-1.054441]
+|   |   |--- num__sender_reputation >  -1.517259
+|   |   |   |--- value: [-0.435001]
+|--- num__subject_length >  -0.025058
+|   |--- num__subject_length <= 1.268936
+|   |   |--- num__urgent_language_score <= -1.262100
+|   |   |   |--- value: [-1.073220]
+|   |   |--- num__urgent_language_score >  -1.262100
+|   |   |   |--- value: [0.243361]
+|   |--- num__subject_length >  1.268936
+|   |   |--- num__has_shortened_url <= 1.181622
+|   |   |   |--- value: [-0.557464]
+|   |   |--- num__has_shortened_url >  1.181622
+|   |   |   |--- value: [1.222470]
+
+stage	55
+|--- num__sender_reputation <= 1.249228
+|   |--- num__subject_length <= -0.025058
+|   |   |--- num__urgent_language_score <= 0.568547
+|   |   |   |--- value: [-0.684128]
+|   |   |--- num__urgent_language_score >  0.568547
+|   |   |   |--- value: [0.252661]
+|   |--- num__subject_length >  -0.025058
+|   |   |--- num__attachment_count <= 0.445415
+|   |   |   |--- value: [0.054463]
+|   |   |--- num__attachment_count >  0.445415
+|   |   |   |--- value: [0.360121]
+|--- num__sender_reputation >  1.249228
+|   |--- num__suspicious_url_count <= 2.778682
+|   |   |--- num__attachment_count <= 4.209483
+|   |   |   |--- value: [-0.751571]
+|   |   |--- num__attachment_count >  4.209483
+|   |   |   |--- value: [1.443508]
+|   |--- num__suspicious_url_count >  2.778682
+|   |   |--- cat__sender_domain_ticketing.example <= 0.500000
+|   |   |   |--- value: [-1.164554]
+|   |   |--- cat__sender_domain_ticketing.example >  0.500000
+|   |   |   |--- value: [-1.726376]
+
+stage	56
+|--- cat__dmarc_result_pass <= 0.500000
+|   |--- cat__sender_domain_mailer.example <= 0.500000
+|   |   |--- num__urgent_language_score <= 0.713983
+|   |   |   |--- value: [0.094428]
+|   |   |--- num__urgent_language_score >  0.713983
+|   |   |   |--- value: [0.770738]
+|   |--- cat__sender_domain_mailer.example >  0.500000
+|   |   |--- num__suspicious_url_count <= 0.697705
+|   |   |   |--- value: [-1.284934]
+|   |   |--- num__suspicious_url_count >  0.697705
+|   |   |   |--- value: [1.215482]
+|--- cat__dmarc_result_pass >  0.500000
+|   |--- cat__sender_domain_support-portal.example <= 0.500000
+|   |   |--- num__urgent_language_score <= 1.773589
+|   |   |   |--- value: [-0.082210]
+|   |   |--- num__urgent_language_score >  1.773589
+|   |   |   |--- value: [-0.669377]
+|   |--- cat__sender_domain_support-portal.example >  0.500000
+|   |   |--- num__has_shortened_url <= 1.181622
+|   |   |   |--- value: [0.193159]
+|   |   |--- num__has_shortened_url >  1.181622
+|   |   |   |--- value: [1.382736]
+
+stage	57
+|--- cat__spf_result_pass <= 0.500000
+|   |--- num__url_count <= -0.697479
+|   |   |--- num__body_length <= -1.455508
+|   |   |   |--- value: [-1.245629]
+|   |   |--- num__body_length >  -1.455508
+|   |   |   |--- value: [-0.106767]
+|   |--- num__url_count >  -0.697479
+|   |   |--- num__body_length <= -1.779139
+|   |   |   |--- value: [2.759415]
+|   |   |--- num__body_length >  -1.779139
+|   |   |   |--- value: [0.408391]
+|--- cat__spf_result_pass >  0.500000
+|   |--- num__url_count <= 3.146751
+|   |   |--- num__suspicious_url_count <= 0.697705
+|   |   |   |--- value: [-0.121230]
+|   |   |--- num__suspicious_url_count >  0.697705
+|   |   |   |--- value: [0.224076]
+|   |--- num__url_count >  3.146751
+|   |   |--- num__subject_length <= 0.714367
+|   |   |   |--- value: [-1.211895]
+|   |   |--- num__subject_length >  0.714367
+|   |   |   |--- value: [2.742287]
+
+stage	58
+|--- cat__sender_domain_service-desk.example <= 0.500000
+|   |--- cat__sender_domain_support-portal.example <= 0.500000
+|   |   |--- cat__sender_domain_hr-updates.example <= 0.500000
+|   |   |   |--- value: [-0.191736]
+|   |   |--- cat__sender_domain_hr-updates.example >  0.500000
+|   |   |   |--- value: [0.402300]
+|   |--- cat__sender_domain_support-portal.example >  0.500000
+|   |   |--- num__url_count <= 0.583931
+|   |   |   |--- value: [0.105168]
+|   |   |--- num__url_count >  0.583931
+|   |   |   |--- value: [0.898623]
+|--- cat__sender_domain_service-desk.example >  0.500000
+|   |--- num__urgent_language_score <= 0.801707
+|   |   |--- num__sender_reputation <= -1.740640
+|   |   |   |--- value: [1.051392]
+|   |   |--- num__sender_reputation >  -1.740640
+|   |   |   |--- value: [-0.259872]
+|   |--- num__urgent_language_score >  0.801707
+|   |   |--- num__urgent_language_score <= 0.843260
+|   |   |   |--- value: [3.623752]
+|   |   |--- num__urgent_language_score >  0.843260
+|   |   |   |--- value: [0.902614]
+
+stage	59
+|--- num__subject_length <= -0.025058
+|   |--- num__urgent_language_score <= 2.103706
+|   |   |--- num__urgent_language_score <= 2.092163
+|   |   |   |--- value: [-0.360929]
+|   |   |--- num__urgent_language_score >  2.092163
+|   |   |   |--- value: [-1.775421]
+|   |--- num__urgent_language_score >  2.103706
+|   |   |--- cat__sender_domain_invoices.example <= 0.500000
+|   |   |   |--- value: [0.887426]
+|   |   |--- cat__sender_domain_invoices.example >  0.500000
+|   |   |   |--- value: [1.712339]
+|--- num__subject_length >  -0.025058
+|   |--- num__subject_length <= 1.268936
+|   |   |--- num__urgent_language_score <= -1.262100
+|   |   |   |--- value: [-1.067234]
+|   |   |--- num__urgent_language_score >  -1.262100
+|   |   |   |--- value: [0.213518]
+|   |--- num__subject_length >  1.268936
+|   |   |--- num__has_shortened_url <= 1.181622
+|   |   |   |--- value: [-0.524936]
+|   |   |--- num__has_shortened_url >  1.181622
+|   |   |   |--- value: [1.141169]
+
+stage	60
+|--- cat__dkim_result_pass <= 0.500000
+|   |--- cat__sender_domain_notify-gateway.example <= 0.500000
+|   |   |--- num__subject_length <= 0.529511
+|   |   |   |--- value: [-0.010862]
+|   |   |--- num__subject_length >  0.529511
+|   |   |   |--- value: [0.519260]
+|   |--- cat__sender_domain_notify-gateway.example >  0.500000
+|   |   |--- num__url_count <= -0.056774
+|   |   |   |--- value: [2.712335]
+|   |   |--- num__url_count >  -0.056774
+|   |   |   |--- value: [0.193910]
+|--- cat__dkim_result_pass >  0.500000
+|   |--- num__attachment_count <= 2.327449
+|   |   |--- num__urgent_language_score <= 1.773589
+|   |   |   |--- value: [-0.058228]
+|   |   |--- num__urgent_language_score >  1.773589
+|   |   |   |--- value: [-0.556257]
+|   |--- num__attachment_count >  2.327449
+|   |   |--- cat__spf_result_softfail <= 0.500000
+|   |   |   |--- value: [0.558099]
+|   |   |--- cat__spf_result_softfail >  0.500000
+|   |   |   |--- value: [-2.143300]
+
+stage	61
+|--- num__sender_reputation <= 0.579085
+|   |--- cat__sender_domain_offers.example <= 0.500000
+|   |   |--- num__subject_length <= -1.134196
+|   |   |   |--- value: [-1.122290]
+|   |   |--- num__subject_length >  -1.134196
+|   |   |   |--- value: [0.187277]
+|   |--- cat__sender_domain_offers.example >  0.500000
+|   |   |--- num__sender_reputation <= -1.116319
+|   |   |   |--- value: [-1.416656]
+|   |   |--- num__sender_reputation >  -1.116319
+|   |   |   |--- value: [-0.394633]
+|--- num__sender_reputation >  0.579085
+|   |--- num__attachment_count <= 4.209483
+|   |   |--- num__sender_reputation <= 0.768099
+|   |   |   |--- value: [-0.801982]
+|   |   |--- num__sender_reputation >  0.768099
+|   |   |   |--- value: [-0.221118]
+|   |--- num__attachment_count >  4.209483
+|   |   |--- num__subject_length <= 0.714367
+|   |   |   |--- value: [1.349762]
+|   |   |--- num__subject_length >  0.714367
+|   |   |   |--- value: [1.605794]
+
+stage	62
+|--- cat__spf_result_fail <= 0.500000
+|   |--- num__sender_reputation <= 1.249228
+|   |   |--- num__subject_length <= 0.529511
+|   |   |   |--- value: [-0.122528]
+|   |   |--- num__subject_length >  0.529511
+|   |   |   |--- value: [0.205061]
+|   |--- num__sender_reputation >  1.249228
+|   |   |--- num__suspicious_url_count <= 2.778682
+|   |   |   |--- value: [-0.889478]
+|   |   |--- num__suspicious_url_count >  2.778682
+|   |   |   |--- value: [-1.461051]
+|--- cat__spf_result_fail >  0.500000
+|   |--- num__body_length <= 0.048421
+|   |   |--- num__sender_reputation <= -0.165518
+|   |   |   |--- value: [0.659488]
+|   |   |--- num__sender_reputation >  -0.165518
+|   |   |   |--- value: [-0.506408]
+|   |--- num__body_length >  0.048421
+|   |   |--- cat__sender_domain_ticketing.example <= 0.500000
+|   |   |   |--- value: [0.683982]
+|   |   |--- cat__sender_domain_ticketing.example >  0.500000
+|   |   |   |--- value: [10.374486]
+
+stage	63
+|--- num__urgent_language_score <= 0.199186
+|   |--- num__url_count <= -0.056774
+|   |   |--- num__has_shortened_url <= 1.181622
+|   |   |   |--- value: [-0.636565]
+|   |   |--- num__has_shortened_url >  1.181622
+|   |   |   |--- value: [0.574985]
+|   |--- num__url_count >  -0.056774
+|   |   |--- num__subject_length <= -0.025058
+|   |   |   |--- value: [-0.575160]
+|   |   |--- num__subject_length >  -0.025058
+|   |   |   |--- value: [0.394956]
+|--- num__urgent_language_score >  0.199186
+|   |--- cat__sender_domain_corp-notify.example <= 0.500000
+|   |   |--- num__url_count <= 1.865341
+|   |   |   |--- value: [0.275116]
+|   |   |--- num__url_count >  1.865341
+|   |   |   |--- value: [-0.712169]
+|   |--- cat__sender_domain_corp-notify.example >  0.500000
+|   |   |--- cat__dmarc_result_pass <= 0.500000
+|   |   |   |--- value: [-1.651485]
+|   |   |--- cat__dmarc_result_pass >  0.500000
+|   |   |   |--- value: [-1.064941]
+
+stage	64
+|--- cat__dmarc_result_pass <= 0.500000
+|   |--- num__url_count <= 3.146751
+|   |   |--- cat__sender_domain_mailer.example <= 0.500000
+|   |   |   |--- value: [0.358757]
+|   |   |--- cat__sender_domain_mailer.example >  0.500000
+|   |   |   |--- value: [-0.762891]
+|   |--- num__url_count >  3.146751
+|   |   |--- cat__spf_result_fail <= 0.500000
+|   |   |   |--- value: [-2.427114]
+|   |   |--- cat__spf_result_fail >  0.500000
+|   |   |   |--- value: [1.457248]
+|--- cat__dmarc_result_pass >  0.500000
+|   |--- num__body_length <= -0.827285
+|   |   |--- num__sender_reputation <= -0.171246
+|   |   |   |--- value: [0.720764]
+|   |   |--- num__sender_reputation >  -0.171246
+|   |   |   |--- value: [-0.264348]
+|   |--- num__body_length >  -0.827285
+|   |   |--- num__urgent_language_score <= 1.768972
+|   |   |   |--- value: [-0.114184]
+|   |   |--- num__urgent_language_score >  1.768972
+|   |   |   |--- value: [-0.603233]
+
+stage	65
+|--- num__suspicious_url_count <= 2.778682
+|   |--- num__subject_length <= 1.268936
+|   |   |--- num__subject_length <= 0.529511
+|   |   |   |--- value: [-0.127200]
+|   |   |--- num__subject_length >  0.529511
+|   |   |   |--- value: [0.288813]
+|   |--- num__subject_length >  1.268936
+|   |   |--- num__subject_length <= 1.823505
+|   |   |   |--- value: [-0.910747]
+|   |   |--- num__subject_length >  1.823505
+|   |   |   |--- value: [0.257729]
+|--- num__suspicious_url_count >  2.778682
+|   |--- cat__sender_domain_secure-mail.example <= 0.500000
+|   |   |--- num__urgent_language_score <= 0.249973
+|   |   |   |--- value: [1.266165]
+|   |   |--- num__urgent_language_score >  0.249973
+|   |   |   |--- value: [0.653858]
+|   |--- cat__sender_domain_secure-mail.example >  0.500000
+|   |   |--- num__subject_length <= 0.529511
+|   |   |   |--- value: [-1.249263]
+|   |   |--- num__subject_length >  0.529511
+|   |   |   |--- value: [-1.700505]
+
+stage	66
+|--- cat__sender_domain_service-desk.example <= 0.500000
+|   |--- cat__sender_domain_support-portal.example <= 0.500000
+|   |   |--- cat__sender_domain_notify-gateway.example <= 0.500000
+|   |   |   |--- value: [-0.179585]
+|   |   |--- cat__sender_domain_notify-gateway.example >  0.500000
+|   |   |   |--- value: [0.326819]
+|   |--- cat__sender_domain_support-portal.example >  0.500000
+|   |   |--- num__subject_length <= 0.529511
+|   |   |   |--- value: [0.678403]
+|   |   |--- num__subject_length >  0.529511
+|   |   |   |--- value: [-0.254951]
+|--- cat__sender_domain_service-desk.example >  0.500000
+|   |--- num__urgent_language_score <= 0.573164
+|   |   |--- num__url_count <= 0.583931
+|   |   |   |--- value: [-0.541994]
+|   |   |--- num__url_count >  0.583931
+|   |   |   |--- value: [0.657333]
+|   |--- num__urgent_language_score >  0.573164
+|   |   |--- num__urgent_language_score <= 0.612409
+|   |   |   |--- value: [5.965081]
+|   |   |--- num__urgent_language_score >  0.612409
+|   |   |   |--- value: [0.918716]
+
+stage	67
+|--- cat__spf_result_pass <= 0.500000
+|   |--- cat__sender_domain_secure-mail.example <= 0.500000
+|   |   |--- cat__spf_result_softfail <= 0.500000
+|   |   |   |--- value: [0.444493]
+|   |   |--- cat__spf_result_softfail >  0.500000
+|   |   |   |--- value: [-0.174696]
+|   |--- cat__sender_domain_secure-mail.example >  0.500000
+|   |   |--- num__attachment_count <= 2.327449
+|   |   |   |--- value: [-1.139405]
+|   |   |--- num__attachment_count >  2.327449
+|   |   |   |--- value: [-1.561315]
+|--- cat__spf_result_pass >  0.500000
+|   |--- num__url_count <= 3.146751
+|   |   |--- cat__sender_domain_updates.example <= 0.500000
+|   |   |   |--- value: [0.004532]
+|   |   |--- cat__sender_domain_updates.example >  0.500000
+|   |   |   |--- value: [-0.625686]
+|   |--- num__url_count >  3.146751
+|   |   |--- num__subject_length <= 0.714367
+|   |   |   |--- value: [-1.127924]
+|   |   |--- num__subject_length >  0.714367
+|   |   |   |--- value: [2.110579]
+
+stage	68
+|--- num__attachment_count <= 0.445415
+|   |--- cat__sender_domain_hr-updates.example <= 0.500000
+|   |   |--- num__subject_length <= 1.268936
+|   |   |   |--- value: [-0.087915]
+|   |   |--- num__subject_length >  1.268936
+|   |   |   |--- value: [-0.624562]
+|   |--- cat__sender_domain_hr-updates.example >  0.500000
+|   |   |--- num__urgent_language_score <= 0.226888
+|   |   |   |--- value: [-0.412202]
+|   |   |--- num__urgent_language_score >  0.226888
+|   |   |   |--- value: [1.217638]
+|--- num__attachment_count >  0.445415
+|   |--- num__has_shortened_url <= 1.181622
+|   |   |--- num__suspicious_url_count <= 0.697705
+|   |   |   |--- value: [-0.066487]
+|   |   |--- num__suspicious_url_count >  0.697705
+|   |   |   |--- value: [0.567219]
+|   |--- num__has_shortened_url >  1.181622
+|   |   |--- num__sender_reputation <= -0.368852
+|   |   |   |--- value: [-0.068150]
+|   |   |--- num__sender_reputation >  -0.368852
+|   |   |   |--- value: [1.084558]
+
+stage	69
+|--- num__subject_length <= -1.134196
+|   |--- num__sender_reputation <= -2.330595
+|   |   |--- value: [-2.011622]
+|   |--- num__sender_reputation >  -2.330595
+|   |   |--- num__sender_reputation <= -1.517259
+|   |   |   |--- value: [-1.411200]
+|   |   |--- num__sender_reputation >  -1.517259
+|   |   |   |--- value: [-1.039258]
+|--- num__subject_length >  -1.134196
+|   |--- num__sender_reputation <= 1.249228
+|   |   |--- num__body_length <= -0.827285
+|   |   |   |--- value: [0.354001]
+|   |   |--- num__body_length >  -0.827285
+|   |   |   |--- value: [0.004417]
+|   |--- num__sender_reputation >  1.249228
+|   |   |--- num__suspicious_url_count <= 2.778682
+|   |   |   |--- value: [-0.600656]
+|   |   |--- num__suspicious_url_count >  2.778682
+|   |   |   |--- value: [-1.459177]
+
+stage	70
+|--- cat__dkim_result_pass <= 0.500000
+|   |--- cat__sender_domain_corp-notify.example <= 0.500000
+|   |   |--- num__url_count <= 3.146751
+|   |   |   |--- value: [0.359628]
+|   |   |--- num__url_count >  3.146751
+|   |   |   |--- value: [-1.529084]
+|   |--- cat__sender_domain_corp-notify.example >  0.500000
+|   |   |--- num__urgent_language_score <= 1.510419
+|   |   |   |--- value: [-0.751748]
+|   |   |--- num__urgent_language_score >  1.510419
+|   |   |   |--- value: [-2.475372]
+|--- cat__dkim_result_pass >  0.500000
+|   |--- num__suspicious_url_count <= 2.778682
+|   |   |--- num__url_count <= 1.865341
+|   |   |   |--- value: [-0.039984]
+|   |   |--- num__url_count >  1.865341
+|   |   |   |--- value: [-0.539674]
+|   |--- num__suspicious_url_count >  2.778682
+|   |   |--- cat__sender_domain_secure-mail.example <= 0.500000
+|   |   |   |--- value: [0.873237]
+|   |   |--- cat__sender_domain_secure-mail.example >  0.500000
+|   |   |   |--- value: [-1.434476]
+
+stage	71
+|--- num__body_length <= 1.774450
+|   |--- num__subject_length <= -0.025058
+|   |   |--- num__urgent_language_score <= 1.468866
+|   |   |   |--- value: [-0.391947]
+|   |   |--- num__urgent_language_score >  1.468866
+|   |   |   |--- value: [0.416087]
+|   |--- num__subject_length >  -0.025058
+|   |   |--- num__urgent_language_score <= -1.259792
+|   |   |   |--- value: [-1.063486]
+|   |   |--- num__urgent_language_score >  -1.259792
+|   |   |   |--- value: [0.128800]
+|--- num__body_length >  1.774450
+|   |--- num__urgent_language_score <= 1.533504
+|   |   |--- num__suspicious_url_count <= 2.778682
+|   |   |   |--- value: [-1.077422]
+|   |   |--- num__suspicious_url_count >  2.778682
+|   |   |   |--- value: [-1.456014]
+|   |--- num__urgent_language_score >  1.533504
+|   |   |--- cat__dkim_result_fail <= 0.500000
+|   |   |   |--- value: [-1.480388]
+|   |   |--- cat__dkim_result_fail >  0.500000
+|   |   |   |--- value: [-1.464326]
+
+stage	72
+|--- cat__dmarc_result_pass <= 0.500000
+|   |--- num__url_count <= 3.146751
+|   |   |--- num__sender_reputation <= -0.629463
+|   |   |   |--- value: [0.651966]
+|   |   |--- num__sender_reputation >  -0.629463
+|   |   |   |--- value: [0.016380]
+|   |--- num__url_count >  3.146751
+|   |   |--- num__body_length <= 0.873362
+|   |   |   |--- value: [-2.040380]
+|   |   |--- num__body_length >  0.873362
+|   |   |   |--- value: [1.321381]
+|--- cat__dmarc_result_pass >  0.500000
+|   |--- num__urgent_language_score <= 1.773589
+|   |   |--- num__urgent_language_score <= 1.081036
+|   |   |   |--- value: [-0.084322]
+|   |   |--- num__urgent_language_score >  1.081036
+|   |   |   |--- value: [0.374043]
+|   |--- num__urgent_language_score >  1.773589
+|   |   |--- num__sender_reputation <= -1.545898
+|   |   |   |--- value: [0.495083]
+|   |   |--- num__sender_reputation >  -1.545898
+|   |   |   |--- value: [-0.758979]
+
+stage	73
+|--- cat__spf_result_none <= 0.500000
+|   |--- cat__sender_domain_offers.example <= 0.500000
+|   |   |--- num__urgent_language_score <= 0.573164
+|   |   |   |--- value: [-0.081328]
+|   |   |--- num__urgent_language_score >  0.573164
+|   |   |   |--- value: [0.177095]
+|   |--- cat__sender_domain_offers.example >  0.500000
+|   |   |--- num__sender_reputation <= -1.116319
+|   |   |   |--- value: [-1.413100]
+|   |   |--- num__sender_reputation >  -1.116319
+|   |   |   |--- value: [-0.344550]
+|--- cat__spf_result_none >  0.500000
+|   |--- num__body_length <= -0.414815
+|   |   |--- cat__sender_domain_offers.example <= 0.500000
+|   |   |   |--- value: [1.578700]
+|   |   |--- cat__sender_domain_offers.example >  0.500000
+|   |   |   |--- value: [3.610444]
+|   |--- num__body_length >  -0.414815
+|   |   |--- num__sender_reputation <= -1.176460
+|   |   |   |--- value: [1.120722]
+|   |   |--- num__sender_reputation >  -1.176460
+|   |   |   |--- value: [-0.935148]
+
+stage	74
+|--- cat__sender_domain_service-desk.example <= 0.500000
+|   |--- cat__sender_domain_support-portal.example <= 0.500000
+|   |   |--- num__subject_length <= 0.529511
+|   |   |   |--- value: [-0.247791]
+|   |   |--- num__subject_length >  0.529511
+|   |   |   |--- value: [0.118049]
+|   |--- cat__sender_domain_support-portal.example >  0.500000
+|   |   |--- num__subject_length <= 0.529511
+|   |   |   |--- value: [0.600916]
+|   |   |--- num__subject_length >  0.529511
+|   |   |   |--- value: [-0.248470]
+|--- cat__sender_domain_service-desk.example >  0.500000
+|   |--- num__urgent_language_score <= 0.801707
+|   |   |--- num__sender_reputation <= -1.740640
+|   |   |   |--- value: [1.029894]
+|   |   |--- num__sender_reputation >  -1.740640
+|   |   |   |--- value: [-0.272528]
+|   |--- num__urgent_language_score >  0.801707
+|   |   |--- num__urgent_language_score <= 0.843260
+|   |   |   |--- value: [2.779479]
+|   |   |--- num__urgent_language_score >  0.843260
+|   |   |   |--- value: [0.705120]
+
+stage	75
+|--- num__attachment_count <= 0.445415
+|   |--- cat__sender_domain_hr-updates.example <= 0.500000
+|   |   |--- num__subject_length <= 1.268936
+|   |   |   |--- value: [-0.075159]
+|   |   |--- num__subject_length >  1.268936
+|   |   |   |--- value: [-0.617155]
+|   |--- cat__sender_domain_hr-updates.example >  0.500000
+|   |   |--- num__urgent_language_score <= 0.226888
+|   |   |   |--- value: [-0.361512]
+|   |   |--- num__urgent_language_score >  0.226888
+|   |   |   |--- value: [1.082878]
+|--- num__attachment_count >  0.445415
+|   |--- num__has_shortened_url <= 1.181622
+|   |   |--- num__suspicious_url_count <= 0.697705
+|   |   |   |--- value: [-0.060706]
+|   |   |--- num__suspicious_url_count >  0.697705
+|   |   |   |--- value: [0.508394]
+|   |--- num__has_shortened_url >  1.181622
+|   |   |--- num__sender_reputation <= -0.726834
+|   |   |   |--- value: [-0.213754]
+|   |   |--- num__sender_reputation >  -0.726834
+|   |   |   |--- value: [0.906688]
+
+stage	76
+|--- num__subject_length <= -0.025058
+|   |--- num__sender_reputation <= -1.686227
+|   |   |--- cat__sender_domain_ticketing.example <= 0.500000
+|   |   |   |--- value: [0.509747]
+|   |   |--- cat__sender_domain_ticketing.example >  0.500000
+|   |   |   |--- value: [-2.038869]
+|   |--- num__sender_reputation >  -1.686227
+|   |   |--- num__sender_reputation <= -1.517259
+|   |   |   |--- value: [-0.897104]
+|   |   |--- num__sender_reputation >  -1.517259
+|   |   |   |--- value: [-0.341553]
+|--- num__subject_length >  -0.025058
+|   |--- num__urgent_language_score <= 1.764355
+|   |   |--- num__urgent_language_score <= 1.081036
+|   |   |   |--- value: [0.050059]
+|   |   |--- num__urgent_language_score >  1.081036
+|   |   |   |--- value: [0.601174]
+|   |--- num__urgent_language_score >  1.764355
+|   |   |--- num__sender_reputation <= -1.293878
+|   |   |   |--- value: [0.603924]
+|   |   |--- num__sender_reputation >  -1.293878
+|   |   |   |--- value: [-0.883994]
+
+stage	77
+|--- cat__dkim_result_pass <= 0.500000
+|   |--- cat__sender_domain_notify-gateway.example <= 0.500000
+|   |   |--- cat__spf_result_pass <= 0.500000
+|   |   |   |--- value: [0.838404]
+|   |   |--- cat__spf_result_pass >  0.500000
+|   |   |   |--- value: [-0.008448]
+|   |--- cat__sender_domain_notify-gateway.example >  0.500000
+|   |   |--- num__url_count <= -0.056774
+|   |   |   |--- value: [2.427175]
+|   |   |--- num__url_count >  -0.056774
+|   |   |   |--- value: [0.041138]
+|--- cat__dkim_result_pass >  0.500000
+|   |--- num__attachment_count <= 2.327449
+|   |   |--- num__urgent_language_score <= 1.674323
+|   |   |   |--- value: [-0.040612]
+|   |   |--- num__urgent_language_score >  1.674323
+|   |   |   |--- value: [-0.447085]
+|   |--- num__attachment_count >  2.327449
+|   |   |--- cat__sender_domain_rewards.example <= 0.500000
+|   |   |   |--- value: [0.211061]
+|   |   |--- cat__sender_domain_rewards.example >  0.500000
+|   |   |   |--- value: [2.457250]
+
+stage	78
+|--- num__sender_reputation <= 1.249228
+|   |--- cat__sender_domain_service-desk.example <= 0.500000
+|   |   |--- cat__sender_domain_notify-gateway.example <= 0.500000
+|   |   |   |--- value: [-0.058177]
+|   |   |--- cat__sender_domain_notify-gateway.example >  0.500000
+|   |   |   |--- value: [0.345044]
+|   |--- cat__sender_domain_service-desk.example >  0.500000
+|   |   |--- num__urgent_language_score <= 0.584707
+|   |   |   |--- value: [-0.098687]
+|   |   |--- num__urgent_language_score >  0.584707
+|   |   |   |--- value: [0.942944]
+|--- num__sender_reputation >  1.249228
+|   |--- num__suspicious_url_count <= 2.778682
+|   |   |--- cat__spf_result_fail <= 0.500000
+|   |   |   |--- value: [-0.838359]
+|   |   |--- cat__spf_result_fail >  0.500000
+|   |   |   |--- value: [0.345253]
+|   |--- num__suspicious_url_count >  2.778682
+|   |   |--- num__subject_length <= -0.025058
+|   |   |   |--- value: [-1.099955]
+|   |   |--- num__subject_length >  -0.025058
+|   |   |   |--- value: [-1.517555]
+
+stage	79
+|--- num__body_length <= 1.774450
+|   |--- num__suspicious_url_count <= 2.778682
+|   |   |--- num__subject_length <= 1.268936
+|   |   |   |--- value: [0.026889]
+|   |   |--- num__subject_length >  1.268936
+|   |   |   |--- value: [-0.418592]
+|   |--- num__suspicious_url_count >  2.778682
+|   |   |--- cat__sender_domain_secure-mail.example <= 0.500000
+|   |   |   |--- value: [0.794781]
+|   |   |--- cat__sender_domain_secure-mail.example >  0.500000
+|   |   |   |--- value: [-1.356293]
+|--- num__body_length >  1.774450
+|   |--- num__urgent_language_score <= 1.533504
+|   |   |--- num__suspicious_url_count <= 2.778682
+|   |   |   |--- value: [-1.066579]
+|   |   |--- num__suspicious_url_count >  2.778682
+|   |   |   |--- value: [-1.337629]
+|   |--- num__urgent_language_score >  1.533504
+|   |   |--- cat__sender_domain_invoices.example <= 0.500000
+|   |   |   |--- value: [-1.400434]
+|   |   |--- cat__sender_domain_invoices.example >  0.500000
+|   |   |   |--- value: [-1.477523]
+
+stage	80
+|--- num__subject_length <= -0.025058
+|   |--- num__urgent_language_score <= 2.103706
+|   |   |--- num__attachment_count <= 4.209483
+|   |   |   |--- value: [-0.294727]
+|   |   |--- num__attachment_count >  4.209483
+|   |   |   |--- value: [-1.426882]
+|   |--- num__urgent_language_score >  2.103706
+|   |   |--- cat__sender_domain_invoices.example <= 0.500000
+|   |   |   |--- value: [0.760847]
+|   |   |--- cat__sender_domain_invoices.example >  0.500000
+|   |   |   |--- value: [1.674761]
+|--- num__subject_length >  -0.025058
+|   |--- num__url_count <= 3.146751
+|   |   |--- num__url_count <= -0.056774
+|   |   |   |--- value: [-0.045405]
+|   |   |--- num__url_count >  -0.056774
+|   |   |   |--- value: [0.210264]
+|   |--- num__url_count >  3.146751
+|   |   |--- num__subject_length <= 0.714367
+|   |   |   |--- value: [-1.458593]
+|   |   |--- num__subject_length >  0.714367
+|   |   |   |--- value: [1.489498]
+
+stage	81
+|--- num__urgent_language_score <= -1.259792
+|   |--- num__suspicious_url_count <= 0.697705
+|   |   |--- num__subject_length <= 0.159798
+|   |   |   |--- value: [-1.014952]
+|   |   |--- num__subject_length >  0.159798
+|   |   |   |--- value: [-1.038253]
+|   |--- num__suspicious_url_count >  0.697705
+|   |   |--- cat__sender_domain_ticketing.example <= 0.500000
+|   |   |   |--- value: [-1.087413]
+|   |   |--- cat__sender_domain_ticketing.example >  0.500000
+|   |   |   |--- value: [-1.368581]
+|--- num__urgent_language_score >  -1.259792
+|   |--- num__subject_length <= -1.134196
+|   |   |--- num__sender_reputation <= -2.330595
+|   |   |   |--- value: [-1.923240]
+|   |   |--- num__sender_reputation >  -2.330595
+|   |   |   |--- value: [-1.061390]
+|   |--- num__subject_length >  -1.134196
+|   |   |--- num__urgent_language_score <= -1.204388
+|   |   |   |--- value: [1.589983]
+|   |   |--- num__urgent_language_score >  -1.204388
+|   |   |   |--- value: [0.055701]
+
+stage	82
+|--- cat__spf_result_none <= 0.500000
+|   |--- cat__sender_domain_updates.example <= 0.500000
+|   |   |--- num__sender_reputation <= 0.544719
+|   |   |   |--- value: [0.093645]
+|   |   |--- num__sender_reputation >  0.544719
+|   |   |   |--- value: [-0.295296]
+|   |--- cat__sender_domain_updates.example >  0.500000
+|   |   |--- num__sender_reputation <= -1.883833
+|   |   |   |--- value: [-2.636059]
+|   |   |--- num__sender_reputation >  -1.883833
+|   |   |   |--- value: [-0.413510]
+|--- cat__spf_result_none >  0.500000
+|   |--- num__body_length <= -0.414815
+|   |   |--- cat__sender_domain_offers.example <= 0.500000
+|   |   |   |--- value: [1.468006]
+|   |   |--- cat__sender_domain_offers.example >  0.500000
+|   |   |   |--- value: [2.767869]
+|   |--- num__body_length >  -0.414815
+|   |   |--- num__sender_reputation <= -0.111105
+|   |   |   |--- value: [0.430775]
+|   |   |--- num__sender_reputation >  -0.111105
+|   |   |   |--- value: [-1.180553]
+
+stage	83
+|--- cat__spf_result_fail <= 0.500000
+|   |--- num__subject_length <= 0.529511
+|   |   |--- cat__sender_domain_support-portal.example <= 0.500000
+|   |   |   |--- value: [-0.236910]
+|   |   |--- cat__sender_domain_support-portal.example >  0.500000
+|   |   |   |--- value: [0.532514]
+|   |--- num__subject_length >  0.529511
+|   |   |--- num__sender_reputation <= -0.156927
+|   |   |   |--- value: [0.345294]
+|   |   |--- num__sender_reputation >  -0.156927
+|   |   |   |--- value: [-0.096521]
+|--- cat__spf_result_fail >  0.500000
+|   |--- num__body_length <= 0.048421
+|   |   |--- cat__sender_domain_invoices.example <= 0.500000
+|   |   |   |--- value: [-0.187845]
+|   |   |--- cat__sender_domain_invoices.example >  0.500000
+|   |   |   |--- value: [1.365679]
+|   |--- num__body_length >  0.048421
+|   |   |--- cat__sender_domain_ticketing.example <= 0.500000
+|   |   |   |--- value: [0.598601]
+|   |   |--- cat__sender_domain_ticketing.example >  0.500000
+|   |   |   |--- value: [4.822328]
+
+stage	84
+|--- num__subject_length <= 2.378074
+|   |--- num__subject_length <= 1.823505
+|   |   |--- num__subject_length <= 1.268936
+|   |   |   |--- value: [0.030929]
+|   |   |--- num__subject_length >  1.268936
+|   |   |   |--- value: [-0.749821]
+|   |--- num__subject_length >  1.823505
+|   |   |--- num__sender_reputation <= 0.155234
+|   |   |   |--- value: [1.159909]
+|   |   |--- num__sender_reputation >  0.155234
+|   |   |   |--- value: [-1.100166]
+|--- num__subject_length >  2.378074
+|   |--- num__sender_reputation <= -1.651861
+|   |   |--- value: [-2.064728]
+|   |--- num__sender_reputation >  -1.651861
+|   |   |--- cat__spf_result_fail <= 0.500000
+|   |   |   |--- value: [-1.092079]
+|   |   |--- cat__spf_result_fail >  0.500000
+|   |   |   |--- value: [-1.249720]
+
+stage	85
+|--- cat__dmarc_result_pass <= 0.500000
+|   |--- cat__sender_domain_invoices.example <= 0.500000
+|   |   |--- num__body_length <= -1.626842
+|   |   |   |--- value: [1.324213]
+|   |   |--- num__body_length >  -1.626842
+|   |   |   |--- value: [0.067674]
+|   |--- cat__sender_domain_invoices.example >  0.500000
+|   |   |--- num__body_length <= 1.400054
+|   |   |   |--- value: [0.720312]
+|   |   |--- num__body_length >  1.400054
+|   |   |   |--- value: [3.672242]
+|--- cat__dmarc_result_pass >  0.500000
+|   |--- num__body_length <= -0.827285
+|   |   |--- num__sender_reputation <= 0.063590
+|   |   |   |--- value: [0.550976]
+|   |   |--- num__sender_reputation >  0.063590
+|   |   |   |--- value: [-0.371378]
+|   |--- num__body_length >  -0.827285
+|   |   |--- num__urgent_language_score <= 1.768972
+|   |   |   |--- value: [-0.090730]
+|   |   |--- num__urgent_language_score >  1.768972
+|   |   |   |--- value: [-0.554949]
+
+stage	86
+|--- cat__sender_domain_offers.example <= 0.500000
+|   |--- num__suspicious_url_count <= 2.778682
+|   |   |--- num__url_count <= 1.865341
+|   |   |   |--- value: [0.039689]
+|   |   |--- num__url_count >  1.865341
+|   |   |   |--- value: [-0.460470]
+|   |--- num__suspicious_url_count >  2.778682
+|   |   |--- cat__sender_domain_secure-mail.example <= 0.500000
+|   |   |   |--- value: [0.924171]
+|   |   |--- cat__sender_domain_secure-mail.example >  0.500000
+|   |   |   |--- value: [-1.346305]
+|--- cat__sender_domain_offers.example >  0.500000
+|   |--- num__sender_reputation <= -1.116319
+|   |   |--- num__suspicious_url_count <= 0.697705
+|   |   |   |--- value: [-1.185045]
+|   |   |--- num__suspicious_url_count >  0.697705
+|   |   |   |--- value: [-1.729902]
+|   |--- num__sender_reputation >  -1.116319
+|   |   |--- num__sender_reputation <= -0.973126
+|   |   |   |--- value: [2.044067]
+|   |   |--- num__sender_reputation >  -0.973126
+|   |   |   |--- value: [-0.380437]
+
+stage	87
+|--- num__attachment_count <= 0.445415
+|   |--- cat__sender_domain_hr-updates.example <= 0.500000
+|   |   |--- num__subject_length <= 1.268936
+|   |   |   |--- value: [-0.070357]
+|   |   |--- num__subject_length >  1.268936
+|   |   |   |--- value: [-0.563479]
+|   |--- cat__sender_domain_hr-updates.example >  0.500000
+|   |   |--- num__urgent_language_score <= 0.226888
+|   |   |   |--- value: [-0.327330]
+|   |   |--- num__urgent_language_score >  0.226888
+|   |   |   |--- value: [0.973663]
+|--- num__attachment_count >  0.445415
+|   |--- num__has_shortened_url <= 1.181622
+|   |   |--- cat__spf_result_softfail <= 0.500000
+|   |   |   |--- value: [0.091944]
+|   |   |--- cat__spf_result_softfail >  0.500000
+|   |   |   |--- value: [-1.187533]
+|   |--- num__has_shortened_url >  1.181622
+|   |   |--- num__url_count <= -0.056774
+|   |   |   |--- value: [1.107252]
+|   |   |--- num__url_count >  -0.056774
+|   |   |   |--- value: [0.033222]
+
+stage	88
+|--- num__body_length <= 1.774450
+|   |--- cat__dkim_result_pass <= 0.500000
+|   |   |--- num__url_count <= 3.146751
+|   |   |   |--- value: [0.251850]
+|   |   |--- num__url_count >  3.146751
+|   |   |   |--- value: [-1.608374]
+|   |--- cat__dkim_result_pass >  0.500000
+|   |   |--- num__subject_length <= -0.025058
+|   |   |   |--- value: [-0.355851]
+|   |   |--- num__subject_length >  -0.025058
+|   |   |   |--- value: [0.047538]
+|--- num__body_length >  1.774450
+|   |--- num__urgent_language_score <= 1.533504
+|   |   |--- num__suspicious_url_count <= 2.778682
+|   |   |   |--- value: [-1.057335]
+|   |   |--- num__suspicious_url_count >  2.778682
+|   |   |   |--- value: [-1.307771]
+|   |--- num__urgent_language_score >  1.533504
+|   |   |--- num__suspicious_url_count <= 0.697705
+|   |   |   |--- value: [-1.417565]
+|   |   |--- num__suspicious_url_count >  0.697705
+|   |   |   |--- value: [-1.317124]
+
+stage	89
+|--- cat__spf_result_pass <= 0.500000
+|   |--- cat__sender_domain_secure-mail.example <= 0.500000
+|   |   |--- num__url_count <= -0.697479
+|   |   |   |--- value: [-0.244627]
+|   |   |--- num__url_count >  -0.697479
+|   |   |   |--- value: [0.369541]
+|   |--- cat__sender_domain_secure-mail.example >  0.500000
+|   |   |--- num__urgent_language_score <= 0.171484
+|   |   |   |--- value: [-1.100625]
+|   |   |--- num__urgent_language_score >  0.171484
+|   |   |   |--- value: [-1.225474]
+|--- cat__spf_result_pass >  0.500000
+|   |--- num__sender_reputation <= -1.116319
+|   |   |--- num__sender_reputation <= -1.230873
+|   |   |   |--- value: [-0.090927]
+|   |   |--- num__sender_reputation >  -1.230873
+|   |   |   |--- value: [-1.222495]
+|   |--- num__sender_reputation >  -1.116319
+|   |   |--- num__sender_reputation <= -0.835661
+|   |   |   |--- value: [0.551765]
+|   |   |--- num__sender_reputation >  -0.835661
+|   |   |   |--- value: [-0.055512]
+
+stage	90
+|--- num__urgent_language_score <= -1.259792
+|   |--- num__suspicious_url_count <= 0.697705
+|   |   |--- num__subject_length <= 0.159798
+|   |   |   |--- value: [-1.013008]
+|   |   |--- num__subject_length >  0.159798
+|   |   |   |--- value: [-1.035417]
+|   |--- num__suspicious_url_count >  0.697705
+|   |   |--- cat__sender_domain_ticketing.example <= 0.500000
+|   |   |   |--- value: [-1.077210]
+|   |   |--- cat__sender_domain_ticketing.example >  0.500000
+|   |   |   |--- value: [-1.338013]
+|--- num__urgent_language_score >  -1.259792
+|   |--- num__subject_length <= -1.134196
+|   |   |--- num__sender_reputation <= -2.330595
+|   |   |   |--- value: [-1.842258]
+|   |   |--- num__sender_reputation >  -2.330595
+|   |   |   |--- value: [-1.060196]
+|   |--- num__subject_length >  -1.134196
+|   |   |--- num__urgent_language_score <= -1.204388
+|   |   |   |--- value: [1.268022]
+|   |   |--- num__urgent_language_score >  -1.204388
+|   |   |   |--- value: [0.049717]
+
+stage	91
+|--- cat__spf_result_none <= 0.500000
+|   |--- cat__sender_domain_service-desk.example <= 0.500000
+|   |   |--- cat__sender_domain_support-portal.example <= 0.500000
+|   |   |   |--- value: [-0.097527]
+|   |   |--- cat__sender_domain_support-portal.example >  0.500000
+|   |   |   |--- value: [0.227272]
+|   |--- cat__sender_domain_service-desk.example >  0.500000
+|   |   |--- num__urgent_language_score <= 0.490058
+|   |   |   |--- value: [-0.188775]
+|   |   |--- num__urgent_language_score >  0.490058
+|   |   |   |--- value: [0.747136]
+|--- cat__spf_result_none >  0.500000
+|   |--- num__body_length <= -0.414815
+|   |   |--- cat__sender_domain_offers.example <= 0.500000
+|   |   |   |--- value: [1.349289]
+|   |   |--- cat__sender_domain_offers.example >  0.500000
+|   |   |   |--- value: [2.398059]
+|   |--- num__body_length >  -0.414815
+|   |   |--- num__sender_reputation <= -0.509181
+|   |   |   |--- value: [0.588554]
+|   |   |--- num__sender_reputation >  -0.509181
+|   |   |   |--- value: [-1.090035]
+
+stage	92
+|--- num__subject_length <= 2.378074
+|   |--- num__subject_length <= 1.823505
+|   |   |--- num__subject_length <= 1.268936
+|   |   |   |--- value: [0.027602]
+|   |   |--- num__subject_length >  1.268936
+|   |   |   |--- value: [-0.704593]
+|   |--- num__subject_length >  1.823505
+|   |   |--- num__sender_reputation <= 0.155234
+|   |   |   |--- value: [1.069161]
+|   |   |--- num__sender_reputation >  0.155234
+|   |   |   |--- value: [-1.084858]
+|--- num__subject_length >  2.378074
+|   |--- cat__sender_domain_notify-gateway.example <= 0.500000
+|   |   |--- cat__spf_result_fail <= 0.500000
+|   |   |   |--- value: [-1.079793]
+|   |   |--- cat__spf_result_fail >  0.500000
+|   |   |   |--- value: [-1.207261]
+|   |--- cat__sender_domain_notify-gateway.example >  0.500000
+|   |   |--- value: [-1.807086]
+
+stage	93
+|--- cat__sender_domain_notify-gateway.example <= 0.500000
+|   |--- num__url_count <= -0.056774
+|   |   |--- num__urgent_language_score <= 0.333079
+|   |   |   |--- value: [-0.539354]
+|   |   |--- num__urgent_language_score >  0.333079
+|   |   |   |--- value: [0.192075]
+|   |--- num__url_count >  -0.056774
+|   |   |--- num__urgent_language_score <= -0.590324
+|   |   |   |--- value: [0.878012]
+|   |   |--- num__urgent_language_score >  -0.590324
+|   |   |   |--- value: [-0.019747]
+|--- cat__sender_domain_notify-gateway.example >  0.500000
+|   |--- num__attachment_count <= 2.327449
+|   |   |--- num__url_count <= -0.056774
+|   |   |   |--- value: [0.758491]
+|   |   |--- num__url_count >  -0.056774
+|   |   |   |--- value: [-0.435198]
+|   |--- num__attachment_count >  2.327449
+|   |   |--- num__sender_reputation <= -0.612280
+|   |   |   |--- value: [0.781510]
+|   |   |--- num__sender_reputation >  -0.612280
+|   |   |   |--- value: [2.447366]
+
+stage	94
+|--- num__body_length <= 1.710993
+|   |--- num__subject_length <= -0.025058
+|   |   |--- num__sender_reputation <= -1.700546
+|   |   |   |--- value: [0.439648]
+|   |   |--- num__sender_reputation >  -1.700546
+|   |   |   |--- value: [-0.328042]
+|   |--- num__subject_length >  -0.025058
+|   |   |--- num__body_length <= 1.076424
+|   |   |   |--- value: [0.011711]
+|   |   |--- num__body_length >  1.076424
+|   |   |   |--- value: [0.352927]
+|--- num__body_length >  1.710993
+|   |--- cat__sender_domain_service-desk.example <= 0.500000
+|   |   |--- num__subject_length <= -0.764484
+|   |   |   |--- value: [1.204569]
+|   |   |--- num__subject_length >  -0.764484
+|   |   |   |--- value: [-1.002822]
+|   |--- cat__sender_domain_service-desk.example >  0.500000
+|   |   |--- num__sender_reputation <= -0.208476
+|   |   |   |--- value: [-1.278596]
+|   |   |--- num__sender_reputation >  -0.208476
+|   |   |   |--- value: [-1.139318]
+
+stage	95
+|--- cat__spf_result_fail <= 0.500000
+|   |--- cat__sender_domain_updates.example <= 0.500000
+|   |   |--- num__sender_reputation <= 1.249228
+|   |   |   |--- value: [0.042896]
+|   |   |--- num__sender_reputation >  1.249228
+|   |   |   |--- value: [-0.798172]
+|   |--- cat__sender_domain_updates.example >  0.500000
+|   |   |--- num__sender_reputation <= -1.594583
+|   |   |   |--- value: [-1.739575]
+|   |   |--- num__sender_reputation >  -1.594583
+|   |   |   |--- value: [-0.339892]
+|--- cat__spf_result_fail >  0.500000
+|   |--- cat__sender_domain_mailer.example <= 0.500000
+|   |   |--- cat__sender_domain_rewards.example <= 0.500000
+|   |   |   |--- value: [0.392673]
+|   |   |--- cat__sender_domain_rewards.example >  0.500000
+|   |   |   |--- value: [-0.768923]
+|   |--- cat__sender_domain_mailer.example >  0.500000
+|   |   |--- num__body_length <= 1.311214
+|   |   |   |--- value: [-0.984522]
+|   |   |--- num__body_length >  1.311214
+|   |   |   |--- value: [-1.772472]
+
+stage	96
+|--- cat__sender_domain_offers.example <= 0.500000
+|   |--- num__suspicious_url_count <= 2.778682
+|   |   |--- num__url_count <= 1.865341
+|   |   |   |--- value: [0.035023]
+|   |   |--- num__url_count >  1.865341
+|   |   |   |--- value: [-0.423061]
+|   |--- num__suspicious_url_count >  2.778682
+|   |   |--- cat__sender_domain_secure-mail.example <= 0.500000
+|   |   |   |--- value: [0.876260]
+|   |   |--- cat__sender_domain_secure-mail.example >  0.500000
+|   |   |   |--- value: [-1.284289]
+|--- cat__sender_domain_offers.example >  0.500000
+|   |--- num__sender_reputation <= -1.116319
+|   |   |--- num__suspicious_url_count <= 0.697705
+|   |   |   |--- value: [-1.170562]
+|   |   |--- num__suspicious_url_count >  0.697705
+|   |   |   |--- value: [-1.582759]
+|   |--- num__sender_reputation >  -1.116319
+|   |   |--- num__body_length <= 1.177955
+|   |   |   |--- value: [-0.486245]
+|   |   |--- num__body_length >  1.177955
+|   |   |   |--- value: [1.378647]
+
+stage	97
+|--- cat__dmarc_result_pass <= 0.500000
+|   |--- num__body_length <= -0.998618
+|   |   |--- num__body_length <= -1.024001
+|   |   |   |--- value: [-0.249980]
+|   |   |--- num__body_length >  -1.024001
+|   |   |   |--- value: [-3.113729]
+|   |--- num__body_length >  -0.998618
+|   |   |--- num__body_length <= -0.846322
+|   |   |   |--- value: [1.690540]
+|   |   |--- num__body_length >  -0.846322
+|   |   |   |--- value: [0.226290]
+|--- cat__dmarc_result_pass >  0.500000
+|   |--- num__urgent_language_score <= 1.773589
+|   |   |--- num__urgent_language_score <= 1.081036
+|   |   |   |--- value: [-0.057437]
+|   |   |--- num__urgent_language_score >  1.081036
+|   |   |   |--- value: [0.254626]
+|   |--- num__urgent_language_score >  1.773589
+|   |   |--- num__sender_reputation <= -0.394627
+|   |   |   |--- value: [0.024275]
+|   |   |--- num__sender_reputation >  -0.394627
+|   |   |   |--- value: [-1.083306]
+
+stage	98
+|--- num__urgent_language_score <= -1.259792
+|   |--- num__suspicious_url_count <= 0.697705
+|   |   |--- num__subject_length <= 0.159798
+|   |   |   |--- value: [-1.011650]
+|   |   |--- num__subject_length >  0.159798
+|   |   |   |--- value: [-1.031831]
+|   |--- num__suspicious_url_count >  0.697705
+|   |   |--- cat__sender_domain_ticketing.example <= 0.500000
+|   |   |   |--- value: [-1.072670]
+|   |   |--- cat__sender_domain_ticketing.example >  0.500000
+|   |   |   |--- value: [-1.321600]
+|--- num__urgent_language_score >  -1.259792
+|   |--- num__subject_length <= 0.529511
+|   |   |--- cat__sender_domain_support-portal.example <= 0.500000
+|   |   |   |--- value: [-0.132531]
+|   |   |--- cat__sender_domain_support-portal.example >  0.500000
+|   |   |   |--- value: [0.493497]
+|   |--- num__subject_length >  0.529511
+|   |   |--- num__url_count <= 0.583931
+|   |   |   |--- value: [0.000323]
+|   |   |--- num__url_count >  0.583931
+|   |   |   |--- value: [0.484408]
+
+stage	99
+|--- cat__spf_result_none <= 0.500000
+|   |--- cat__sender_domain_hr-updates.example <= 0.500000
+|   |   |--- num__subject_length <= 1.268936
+|   |   |   |--- value: [-0.006184]
+|   |   |--- num__subject_length >  1.268936
+|   |   |   |--- value: [-0.469562]
+|   |--- cat__sender_domain_hr-updates.example >  0.500000
+|   |   |--- num__body_length <= 1.101806
+|   |   |   |--- value: [0.043349]
+|   |   |--- num__body_length >  1.101806
+|   |   |   |--- value: [1.472091]
+|--- cat__spf_result_none >  0.500000
+|   |--- num__body_length <= -0.414815
+|   |   |--- cat__sender_domain_offers.example <= 0.500000
+|   |   |   |--- value: [1.249725]
+|   |   |--- cat__sender_domain_offers.example >  0.500000
+|   |   |   |--- value: [2.154155]
+|   |--- num__body_length >  -0.414815
+|   |   |--- num__sender_reputation <= -1.176460
+|   |   |   |--- value: [1.106092]
+|   |   |--- num__sender_reputation >  -1.176460
+|   |   |   |--- value: [-0.842668]

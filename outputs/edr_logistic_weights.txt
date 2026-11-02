@@ -1,0 +1,46 @@
+algorithm	logistic
+estimator	LogisticRegression
+n_features	33
+numeric_scaling	standardized
+weights apply to preprocessor output
+classes	0	1
+
+intercept	-4.085389177
+positive_class	1
+weight is the decision function coefficient for the positive class
+positive probability is the sigmoid of intercept + sum of preprocessor output times weight
+
+index	feature	weight
+5	num__process_execution_frequency	-4.175775421
+17	cat__process_name_mshta.exe	2.865873662
+22	cat__process_name_rundll32.exe	2.800110354
+10	cat__endpoint_type_user	-2.54333675
+13	cat__process_name_cmd.exe	2.474674298
+21	cat__process_name_python.exe	2.313507258
+9	cat__endpoint_type_server	2.165195492
+23	cat__process_name_sqlservr.exe	-1.492051812
+14	cat__process_name_docker.exe	-1.440288222
+20	cat__process_name_powershell.exe	1.39430103
+12	cat__process_name_chrome.exe	-1.354834321
+19	cat__process_name_outlook.exe	-1.229359482
+15	cat__process_name_excel.exe	-1.12536901
+26	cat__process_name_w3wp.exe	-1.116535097
+25	cat__process_name_teams.exe	-1.097147853
+16	cat__process_name_git.exe	-1.028160816
+3	num__unique_destination_count	1.009997948
+11	cat__process_name_backup.exe	-0.746391329
+24	cat__process_name_svchost.exe	-0.7418964009
+1	num__process_prevalence	-0.6593699093
+18	cat__process_name_node.exe	-0.5909065104
+7	num__unusual_parent_child	0.5153671793
+4	num__outbound_bytes	0.4970839094
+0	num__command_line_length	0.4078411024
+6	num__unsigned_binary	0.3755491266
+28	cat__parent_process_devenv.exe	-0.3275458643
+8	cat__endpoint_type_developer	0.2636670059
+27	cat__parent_process_cmd.exe	0.1756815642
+2	num__network_connection_count	0.1717939923
+31	cat__parent_process_w3wp.exe	0.1299427868
+30	cat__parent_process_services.exe	-0.1058473973
+32	cat__parent_process_winword.exe	0.0658048534
+29	cat__parent_process_explorer.exe	-0.05251019515

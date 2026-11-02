@@ -1,0 +1,50 @@
+{
+  "name": "edr_baseline",
+  "config": {
+    "problem": "classification",
+    "dataset": "edr",
+    "dataset_file": "edr_events.csv",
+    "algorithm": "random_forest",
+    "features": "extended",
+    "feature_columns": [
+      "command_line_length",
+      "process_prevalence",
+      "network_connection_count",
+      "unique_destination_count",
+      "outbound_bytes",
+      "process_execution_frequency",
+      "unsigned_binary",
+      "unusual_parent_child",
+      "endpoint_type",
+      "process_name",
+      "parent_process"
+    ],
+    "threshold": 0.5,
+    "class_weight": "none",
+    "sampling": "none",
+    "split": "validation",
+    "scale": "yes",
+    "n_estimators": 100,
+    "max_depth": 8,
+    "min_samples_leaf": 1,
+    "neighbors": 5,
+    "c": 1.0
+  },
+  "metrics": {
+    "n": 1295,
+    "positives": 148,
+    "tp": 100,
+    "fp": 2,
+    "tn": 1145,
+    "fn": 48,
+    "accuracy": 0.9613899613899614,
+    "precision": 0.9803921568627451,
+    "recall": 0.6756756756756757,
+    "f1": 0.8,
+    "fpr": 0.0017436791630340018,
+    "predicted_positive_rate": 0.07876447876447877,
+    "roc_auc": 0.9897853389570913,
+    "pr_auc_average_precision": 0.9519505239415637,
+    "train_f1": 0.8972431077694235
+  }
+}

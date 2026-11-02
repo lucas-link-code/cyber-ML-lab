@@ -1,0 +1,51 @@
+{
+  "name": "phishing_boosting_025",
+  "config": {
+    "problem": "classification",
+    "dataset": "phishing",
+    "dataset_file": "phishing_emails.csv",
+    "algorithm": "gradient_boosting",
+    "features": "extended",
+    "feature_columns": [
+      "sender_reputation",
+      "url_count",
+      "suspicious_url_count",
+      "urgent_language_score",
+      "has_shortened_url",
+      "body_length",
+      "attachment_count",
+      "subject_length",
+      "spf_result",
+      "dkim_result",
+      "dmarc_result",
+      "sender_domain"
+    ],
+    "threshold": 0.25,
+    "class_weight": "none",
+    "sampling": "none",
+    "split": "validation",
+    "scale": "yes",
+    "n_estimators": 100,
+    "max_depth": null,
+    "min_samples_leaf": 1,
+    "neighbors": 5,
+    "c": 1.0
+  },
+  "metrics": {
+    "n": 1200,
+    "positives": 201,
+    "tp": 161,
+    "fp": 53,
+    "tn": 946,
+    "fn": 40,
+    "accuracy": 0.9225,
+    "precision": 0.7523364485981309,
+    "recall": 0.8009950248756219,
+    "f1": 0.7759036144578313,
+    "fpr": 0.05305305305305305,
+    "predicted_positive_rate": 0.17833333333333334,
+    "roc_auc": 0.9574649276141813,
+    "pr_auc_average_precision": 0.8821653745869171,
+    "train_f1": 0.8283642224012893
+  }
+}
