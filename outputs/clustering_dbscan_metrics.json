@@ -1,0 +1,22 @@
+{
+  "name": "clustering_dbscan",
+  "config": {
+    "problem": "clustering",
+    "dataset": "network",
+    "dataset_file": "network_activity.csv",
+    "algorithm": "dbscan",
+    "features": "behavioral",
+    "scale": "yes",
+    "k": 4,
+    "eps": 1.6,
+    "min_samples": 12,
+    "split": "exploratory_full_unlabeled"
+  },
+  "metrics": {
+    "n": 5000,
+    "n_clusters": 2,
+    "noise_count": 35,
+    "noise_fraction": 0.007,
+    "silhouette_sample": 0.37013896026552406
+  }
+}

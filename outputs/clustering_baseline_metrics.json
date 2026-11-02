@@ -1,0 +1,23 @@
+{
+  "name": "clustering_baseline",
+  "config": {
+    "problem": "clustering",
+    "dataset": "network",
+    "dataset_file": "network_activity.csv",
+    "algorithm": "kmeans",
+    "features": "behavioral",
+    "scale": "yes",
+    "k": 4,
+    "eps": 1.6,
+    "min_samples": 12,
+    "split": "exploratory_full_unlabeled"
+  },
+  "metrics": {
+    "n": 5000,
+    "n_clusters": 4,
+    "noise_count": 0,
+    "noise_fraction": 0.0,
+    "silhouette_sample": 0.31518998158884537,
+    "inertia": 11894.31442318514
+  }
+}
