@@ -26,7 +26,7 @@
 ## 05: Regression
 
 - Baseline excludes target drivers such as complexity and severity. Adding them to linear regression helps explain more variance; nonlinear boosting can capture squared complexity and workload interactions. RMSE weights extreme residuals more than MAE.
-- Check whether the regression target would be measured only after triage. Historical training needs completed investigations; deployment must use known *input* fields only.
+- Check whether the regression target would be measured only after triage. Historical training needs completed investigations; deployment must use known _input_ fields only.
 
 ## 06: Clustering
 
@@ -36,7 +36,7 @@
 ## 07: Anomalies
 
 - Separate role baselines are appropriate when developer/server activity has a materially different normal range from ordinary users, provided group sample sizes are sufficient.
-- `contamination` is a chosen score-quantile alert budget, not the true malicious fraction. Lower contamination usually reduces alerts while increasing FN. Check precision *and* recall by population and across holdouts.
+- `contamination` is a chosen score-quantile alert budget, not the true malicious fraction. Lower contamination usually reduces alerts while increasing FN. Check precision _and_ recall by population and across holdouts.
 - Isolation Forest isolates rare observations in random trees; LOF compares local density; One-Class SVM learns a normality boundary; Z-scores require a meaningful reference distribution and are sensitive to skew.
 
 ## 08: Independent EDR challenge (read only after trying)

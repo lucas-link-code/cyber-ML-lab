@@ -103,32 +103,137 @@ For clustering, there is no prediction label during fitting. The script gives an
 
 For anomaly detection, fitting and score-threshold calibration use **only training features/scores**; known labels are withheld until validation metrics are calculated. EDR/network splits are **host-exclusive**. For supervised classification and regression, the final test split is reserved; use cross-validation and validation for experimentation instead.
 
-## 5. Learning roadmap
+### What the command does to the rows
 
-| Level | Exercises | Main activities |
-| --- | --- | --- |
-| 1. Execute and observe | 01, 02 | Read the CSV, fit first classifier, compare classifier families |
-| 2. Understand and investigate | 03, 04, 09 | Precision / recall / threshold / class imbalance / error inspection |
-| 3. Modify and improve | 05, 06, 07, 10 | Regression errors, clustering, role-specific anomaly baselines, overfitting |
-| 4. Broaden technique | 11, 12, 13, 14 | Leakage, TF-IDF, cross-validation, drift, backpropagation |
-| 5. Independently solve | 08 | EDR holdout challenge: investigate and justify decisions without spoilers |
+`run_classification.py` divides the CSV into three disjoint groups before it learns anything: training, validation, and a final test set. On the 6,000 row phishing file that split is 3,600, 1,200, and 1,200. EDR and network rows are grouped by host, so one hostname is not present in two groups.
+
+`fit` runs only on the training group. That call is the learning step. For logistic regression the learned parameters are an intercept and one weight per feature after preprocessing. For a random forest they are the splits and the leaf values of the trees. When `fit` returns, those parameters stay fixed. The script then applies them to the validation rows. True positives, false positives, false negatives, and validation F1 are the comparison of those predictions with the real validation labels. The test rows stay unused unless you pass `--evaluate-test`.
+
+A classification run also writes the learned parameters to `outputs/<name>_weights.txt`. The metrics JSON and the confusion matrix chart are the score of those fixed parameters. They are not a second round of learning.
+
+### What fit is doing
+
+`fit` means: find parameters that reduce mistakes on the training rows.
+
+Logistic regression starts from an initial weight vector and updates it to reduce a loss. The loss is a penalty for assigning a high probability to the wrong class. Each update nudges the weights. Training stops when the loss stops improving enough, or when the iteration limit is reached. The phishing probability is the sigmoid of the intercept plus the weighted features. The default lab pipeline standardises numeric features first, so the weights multiply those scaled values.
+
+A random forest grows many trees on the training rows. At each split a tree chooses a feature and a cutoff that separate the training labels, then repeats on the two sides. Growth stops when the tree hits its depth limit, a leaf has too few rows, or no split still helps. The forest prediction is the combined vote of those trees. `fit` is finished when the trees exist. Scoring validation only walks the rows down those trees.
+
+Unsupervised commands use the same word and a different target. Clustering `fit` groups rows by feature similarity and does not read a label. Anomaly `fit` learns a picture of normal training rows and does not read a label. Known labels are used afterwards, to score the result.
+
+### Three ways a later run can change the result
+
+You can change the result in three places. Only the first two call `fit` again.
+
+1. Change the inputs. `--features basic`, `extended`, or `text` selects a different column whitelist. `text` is phishing only and adds term weights from the subject and the body. The vocabulary is learned on the training rows.
+
+2. Change the training settings. `--algorithm` selects the family. Depth, leaf size, `C`, class weight, the number of trees, and oversampling of the training rows change what `fit` stores. Use a new `--name` so the previous metrics, predictions, and charts remain on disk.
+
+3. Change the decision threshold. `--threshold 0.7` keeps the same probabilities and moves the cutoff that turns a probability into class 0 or class 1. Precision, recall, and the confusion matrix move. ROC AUC and average precision stay put, because those scores describe the ranking, not one cutoff. A threshold change cannot repair a model that ranked the validation rows poorly.
+
+### When a high training F1 is not evidence
+
+Training F1 near 1.0 means the model matched the training rows very closely. That can be memorisation of those rows rather than a rule that holds on new ones.
+
+The saved phishing forest in `outputs/exercise03_forest_metrics.json` is an unrestricted random forest on the extended features, with threshold 0.30. Training F1 is 0.997 on the 3,600 training emails. Validation F1 is 0.785 on the 1,200 validation emails. Logistic regression on the same features and the same threshold, in `outputs/exercise02_extended_metrics.json`, has validation F1 0.792. The extra trees fitted the seen mail and did not improve the unseen mail.
+
+Tighten `--max-depth`, raise `--min-samples-leaf`, or keep the simpler model when the validation metrics are tied. Exercise 10 repeats the comparison on EDR by limiting tree depth. Moving the threshold above or below 0.5 changes the precision and recall tradeoff on the same scores. It does not close a gap between training F1 and validation F1.
+
+## 5. Four datasets, four questions
+
+The exercises rotate through four jobs. Section 7 lists every CSV, including the challenge cohorts. This section is the job each main file is for.
+
+**Phishing emails.** `datasets/phishing_emails.csv` has 6,000 rows, about 17 percent labelled phishing. You train a classifier, then inspect false positives and false negatives and try to improve detection. Legitimate marketing mail is included so that a model which alerts on ordinary commercial language will show that mistake.
+
+**Endpoint telemetry.** `datasets/edr_events.csv` has 6,500 rows. You classify suspicious process behaviour and see where legitimate developer and server activity resembles malicious execution. Hosts do not cross the training, validation, and test groups.
+
+**Alert triage.** `datasets/alert_triage.csv` has 3,500 rows. Regression predicts investigation time in minutes. The error is a number of minutes, reported as MAE and RMSE, not as a false positive.
+
+**Network activity.** `datasets/network_activity.csv` has 5,000 rows. Clustering looks for groups of similar connection behaviour. Anomaly detection looks for sessions that sit far from the learned normal. A cluster id or a high anomaly score is not, by itself, a malicious verdict. Labels are withheld until after fitting, and only then used to interpret the result.
+
+### Classification, a category
+
+The prediction is a class. In this lab, class 0 is the legitimate or benign case and class 1 is the malicious case.
+
+| Algorithm              | How it learns                                                               | Security example                            | In this lab                                                          |
+| ---------------------- | --------------------------------------------------------------------------- | ------------------------------------------- | -------------------------------------------------------------------- |
+| Logistic regression    | One weight per feature, plus an intercept, converted to a class probability | Phishing email detection                    | `logistic`                                                           |
+| Decision tree          | A sequence of feature splits                                                | Malicious versus benign processes           | `tree`                                                               |
+| Random forest          | A vote across many decision trees                                           | EDR alert classification                    | `random_forest`                                                      |
+| Gradient boosting      | Trees grown in sequence, each correcting earlier errors                     | Malware detection                           | `gradient_boosting`                                                  |
+| Naive Bayes            | A probability model of each feature given the class                         | Email spam detection                        | `naive_bayes`, Gaussian naive Bayes                                  |
+| K nearest neighbours   | The labels of the nearest stored training rows                              | Samples grouped by similar features         | `knn`                                                                |
+| Support vector machine | A boundary between classes                                                  | Malicious versus benign PowerShell activity | `svm`, RBF kernel                                                    |
+| Neural network         | Several layers of weighted sums and nonlinear functions                     | Malware or traffic classification           | `scripts/neural_network_intro.py` only, a four row XOR demonstration |
+| XGBoost                | Gradient boosting with its own tree booster                                 | The same task as gradient boosting          | optional, install `xgboost`, then `--algorithm xgboost`              |
+
+`run_classification.py` trains every row in that table except the neural network. The neural network exercise is there to show forward propagation and backpropagation on a toy problem, not to classify the CSVs.
+
+### Regression, a number
+
+The prediction is a continuous value, such as 45.6 minutes of investigation time. `run_regression.py` reads `datasets/alert_triage.csv`.
+
+| Algorithm                    | How it learns                                       | Security example                               | In this lab         |
+| ---------------------------- | --------------------------------------------------- | ---------------------------------------------- | ------------------- |
+| Linear regression            | A linear combination of the features                | Predict investigation time                     | `linear`            |
+| Ridge regression             | Linear regression with a penalty on large weights   | Predict analyst workload                       | `ridge`             |
+| Lasso regression             | Linear regression that can set some weights to zero | Keep a subset of features for a duration model | not included        |
+| Decision tree regression     | Split rules that output a number                    | Estimate triage duration                       | `tree`              |
+| Random forest regression     | The average of many regression trees                | Predict investigation workload                 | `random_forest`     |
+| Gradient boosting regression | Sequential correction of numeric errors             | Estimate response duration                     | `gradient_boosting` |
+| Support vector regression    | A fitted function with a tolerated error band       | Predict traffic volume                         | not included        |
+
+Random forest is two different estimators. Classification uses `RandomForestClassifier`. Regression uses `RandomForestRegressor`. The algorithm family is shared. The thing being predicted is not.
+
+### Unsupervised learning, no label during fit
+
+| Task                     | Question                                    | In this lab                                                                           |
+| ------------------------ | ------------------------------------------- | ------------------------------------------------------------------------------------- |
+| Clustering               | Which rows resemble each other              | `run_clustering.py`: `kmeans`, `dbscan`, `hierarchical`                               |
+| Anomaly detection        | Which rows sit far from the learned normal  | `run_anomaly.py`: `isolation_forest`, `lof`, `one_class_svm`, `zscore`                |
+| Dimensionality reduction | How to draw many features in two dimensions | PCA chart written by the clustering script, not a model you select with `--algorithm` |
+
+### The same records, four questions
+
+One collection of endpoint process records can be asked four different questions.
+
+- Classification: which processes are malicious?
+- Regression: how long will each alert take to investigate?
+- Clustering: which processes look alike?
+- Anomaly detection: which processes are unusual relative to the rest?
+
+Classification and regression are supervised. The training rows include a known answer, a class or a number, and `fit` uses that answer. Clustering and anomaly detection are unsupervised. `fit` sees features only. If a label exists, the script uses it after fitting, to measure the result, not to grow the model.
+
+The lab scripts for those four questions are `run_classification.py`, `run_regression.py`, `run_clustering.py`, and `run_anomaly.py`.
+
+## 6. Learning roadmap
+
+| Level                         | Exercises      | Main activities                                                             |
+| ----------------------------- | -------------- | --------------------------------------------------------------------------- |
+| 1. Execute and observe        | 01, 02         | Read the CSV, fit first classifier, compare classifier families             |
+| 2. Understand and investigate | 03, 04, 09     | Precision / recall / threshold / class imbalance / error inspection         |
+| 3. Modify and improve         | 05, 06, 07, 10 | Regression errors, clustering, role-specific anomaly baselines, overfitting |
+| 4. Broaden technique          | 11, 12, 13, 14 | Leakage, TF-IDF, cross-validation, drift, backpropagation                   |
+| 5. Independently solve        | 08             | EDR holdout challenge: investigate and justify decisions without spoilers   |
 
 **Suggested order**: 01 → 02 → 03 → 04 → 05 → 06 → 07 → 09 → 10 → 11 → 12 → 13 → 14 → 08.
 
-The standalone instructions are in `exercises/`. Each includes a single-variable experiment, what to observe, questions, comparisons, and a scenario. `solutions/exercise_solutions.md` is a spoiler file; do not open it before attempting the independent challenge.
+The standalone instructions are in `exercises/`. Each includes a single-variable experiment, what to observe, questions, comparisons, and a scenario. `solutions/exercise_solutions.md` is a short spoiler file, and `solutions/exercise_solutions_explained.md` is the longer worked explanation. Do not open either before attempting the independent challenge.
 
-## 6. Dataset contents
+## 7. Dataset contents
 
-| File | Rows | Purpose | Data characteristics |
-| --- | ---: | --- | --- |
-| `datasets/phishing_emails.csv` | 6,000 | Classification and TF-IDF | 17% malicious; difficult legitimate marketing and stealth phishing cases |
-| `datasets/edr_events.csv` | 6,500 | Classification and anomaly detection | Users, servers and developers; deliberately overlapping rare benign/malicious telemetry |
-| `datasets/alert_triage.csv` | 3,500 | Regression | Alert investigation minutes; nonlinear complexity with noise |
-| `datasets/network_activity.csv` | 5,000 | Clustering and anomalies | Unequal host populations, rare abnormal connections, noisy developer traffic |
-| `datasets/edr_events_challenge.csv` | 6,500 | Generalisation / independent challenge | New developer-behaviour distribution; separate synthetic cohort |
-| `datasets/alert_triage_challenge.csv` | 3,500 | Regression drift | Harder target noise; separate cohort |
-| `datasets/network_activity_challenge.csv` | 5,000 | Anomaly drift | More legitimate anomalous-looking developer flows |
-| `datasets/phishing_emails_leakage_challenge.csv` | 6,000 | Explicit leakage demonstration | Post-investigation feature correlated with answer; excluded from all standard pipelines |
+Section 5 names the task. This table names the file.
+
+| File                                             |  Rows | Purpose                                | Data characteristics                                                                    |
+| ------------------------------------------------ | ----: | -------------------------------------- | --------------------------------------------------------------------------------------- |
+| `datasets/phishing_emails.csv`                   | 6,000 | Classification and TF-IDF              | 17% malicious; difficult legitimate marketing and stealth phishing cases                |
+| `datasets/edr_events.csv`                        | 6,500 | Classification and anomaly detection   | Users, servers and developers; deliberately overlapping rare benign/malicious telemetry |
+| `datasets/alert_triage.csv`                      | 3,500 | Regression                             | Alert investigation minutes; nonlinear complexity with noise                            |
+| `datasets/network_activity.csv`                  | 5,000 | Clustering and anomalies               | Unequal host populations, rare abnormal connections, noisy developer traffic            |
+| `datasets/edr_events_challenge.csv`              | 6,500 | Generalisation / independent challenge | New developer-behaviour distribution; separate synthetic cohort                         |
+| `datasets/alert_triage_challenge.csv`            | 3,500 | Regression drift                       | Harder target noise; separate cohort                                                    |
+| `datasets/network_activity_challenge.csv`        | 5,000 | Anomaly drift                          | More legitimate anomalous-looking developer flows                                       |
+| `datasets/phishing_emails_leakage_challenge.csv` | 6,000 | Explicit leakage demonstration         | Post-investigation feature correlated with answer; excluded from all standard pipelines |
 
 Column definitions and training exclusions: `DATA_DICTIONARY.md`.
 
@@ -146,7 +251,7 @@ Column definitions and training exclusions: `DATA_DICTIONARY.md`.
 
 Run `python scripts/run_classification.py --help`, or the corresponding script's `--help`, to discover exact choices.
 
-## 7. Command reference
+## 8. Command reference
 
 ```bash
 # Supervised classification, logistic regression (phishing)
@@ -192,7 +297,7 @@ python scripts/verify_lab.py
 - **MAE/RMSE**: size of continuous-minute prediction errors (RMSE penalises large misses more); **R²**: relative squared-error improvement compared with predicting the test-set mean.
 - **Silhouette**: separation/compactness heuristic for unlabeled clusters; neither high silhouette nor PCA separation proves maliciousness.
 
-## 8. Technical safeguards and limitations
+## 9. Technical safeguards and limitations
 
 1. Every row and hostname is generated from NumPy pseudorandom draws. `.example` is reserved and non-routable, and no live indicators, real mail, hostnames or executable content are used.
 2. `email_id`, `event_id`, `alert_id`, `session_id`, `hostname` and `source_host` are excluded from training features. Ground-truth labels are excluded from unsupervised training features. No feature is created from the target except in the **explicitly marked leakage challenge**.
@@ -206,7 +311,7 @@ python scripts/verify_lab.py
 
 **Do not import these synthetic metrics into detection production.** They are designed as controlled training exercises with invented probabilities and distributions.
 
-## 9. Cross-cohort drift and inference extension
+## 10. Cross-cohort drift and inference extension
 
 To evaluate a **frozen model trained on the original EDR cohort** against a different synthetic deployment cohort (rather than retraining on it):
 
