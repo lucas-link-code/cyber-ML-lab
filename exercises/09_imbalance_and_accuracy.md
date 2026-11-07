@@ -8,7 +8,7 @@
 
 **ALGORITHM:** All-negative majority baseline versus logistic regression.
 
-**COMMAND:** Run from the `cyber_ml_lab` folder with your virtual environment activated.
+**COMMAND:** Run from the lab folder with your virtual environment activated.
 
 ```bash
 python scripts/majority_baseline.py --dataset phishing

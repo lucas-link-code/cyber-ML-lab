@@ -8,7 +8,7 @@
 
 **ALGORITHM:** K-means; optionally DBSCAN and hierarchical agglomerative clustering.
 
-**COMMAND:** Run from the `cyber_ml_lab` folder with your virtual environment activated.
+**COMMAND:** Run from the lab folder with your virtual environment activated.
 
 ```bash
 python scripts/run_clustering.py --features raw --scale no --k 4 --elbow --name km_unscaled

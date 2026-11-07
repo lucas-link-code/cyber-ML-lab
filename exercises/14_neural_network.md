@@ -8,7 +8,7 @@
 
 **ALGORITHM:** Two-layer feed-forward network: tanh hidden layer and sigmoid output; binary cross-entropy loss.
 
-**COMMAND:** Run from the `cyber_ml_lab` folder with your virtual environment activated.
+**COMMAND:** Run from the lab folder with your virtual environment activated.
 
 ```bash
 python scripts/neural_network_intro.py --epochs 3000 --rate 0.4 --name nn_default

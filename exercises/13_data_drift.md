@@ -2,13 +2,13 @@
 
 **OBJECTIVE:** Detect covariate drift and distinguish in-cohort validation from cross-cohort generalisation.
 
-**SCENARIO:** A new developer tool changes benign process telemetry; a bank wants to know whether an older EDR model still generalises.
+**SCENARIO:** A new developer tool changes benign process telemetry; a security team wants to know whether an older EDR model still generalises.
 
 **DATASET:** `datasets/edr_events.csv` versus `datasets/edr_events_challenge.csv` (separately generated).
 
 **ALGORITHM:** Feature shift diagnostics and Random Forest classification.
 
-**COMMAND:** Run from the `cyber_ml_lab` folder with your virtual environment activated.
+**COMMAND:** Run from the lab folder with your virtual environment activated.
 
 ```bash
 python scripts/drift_check.py --dataset edr

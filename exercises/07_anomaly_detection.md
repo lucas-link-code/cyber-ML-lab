@@ -8,7 +8,7 @@
 
 **ALGORITHM:** Isolation Forest, with LOF/One-Class SVM/Z-score extensions.
 
-**COMMAND:** Run from the `cyber_ml_lab` folder with your virtual environment activated.
+**COMMAND:** Run from the lab folder with your virtual environment activated.
 
 ```bash
 python scripts/run_anomaly.py --algorithm isolation_forest --features raw --baseline global --contamination 0.08 --name anomaly_global

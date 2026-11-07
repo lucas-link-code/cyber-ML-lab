@@ -8,7 +8,7 @@
 
 **ALGORITHM:** Logistic regression using either legitimate or deliberately leaky predictors.
 
-**COMMAND:** Run from the `cyber_ml_lab` folder with your virtual environment activated.
+**COMMAND:** Run from the lab folder with your virtual environment activated.
 
 ```bash
 python scripts/leakage_demo.py

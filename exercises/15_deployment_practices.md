@@ -8,7 +8,7 @@
 
 **ALGORITHM:** Your selected Logistic Regression / Random Forest classifier; classification holdout protocol.
 
-**COMMAND:** Run from the `cyber_ml_lab` folder with your virtual environment activated.
+**COMMAND:** Run from the lab folder with your virtual environment activated.
 
 ```bash
 python scripts/run_classification.py --algorithm logistic --features extended --name candidate_validation

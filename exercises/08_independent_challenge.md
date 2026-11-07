@@ -8,7 +8,7 @@
 
 **ALGORITHM:** Choose an appropriate supervised binary classifier. First run the given Random Forest baseline.
 
-**COMMAND:** Run from the `cyber_ml_lab` folder with your virtual environment activated.
+**COMMAND:** Run from the lab folder with your virtual environment activated.
 
 ```bash
 python scripts/inspect_data.py --dataset edr --dataset-file datasets/edr_events_challenge.csv --rows 10

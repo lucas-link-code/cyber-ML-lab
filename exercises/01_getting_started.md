@@ -8,7 +8,7 @@
 
 **ALGORITHM:** Logistic regression (binary supervised classification).
 
-**COMMAND:** Run from the `cyber_ml_lab` folder with your virtual environment activated.
+**COMMAND:** Run from the lab folder with your virtual environment activated.
 
 ```bash
 python scripts/inspect_data.py --dataset phishing --rows 10

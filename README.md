@@ -2,7 +2,10 @@
 
 **Python 3.11+ | offline after installation | no credentials or external APIs | deterministic synthetic CSVs**
 
-This is a runnable command-line laboratory for a security analyst learning ML. Start with the two commands in **Exercise 01**, then progress at your own pace. You do **not** need Jupyter, an IDE, or experience writing Python models. Run commands from the `cyber_ml_lab` directory.
+This is a runnable command-line laboratory for a security analyst learning ML. Start with the two commands in **Exercise 01**, then progress at your own pace. You do **not** need Jupyter, an IDE, or experience writing Python models. Run commands from the lab folder. Its name depends on how you download it:
+
+- git clone: `git clone https://github.com/lucas-link-code/cyber-ML-lab.git` creates `cyber-ML-lab`. Run `cd cyber-ML-lab`, then skip the three commands that move to Downloads and extract the ZIP, then continue from the version check in the install section for your system.
+- Download ZIP: GitHub saves `cyber-ML-lab-main.zip`. The install blocks below extract it from Downloads to `cyber-ML-lab-main`.
 
 ## 1. Install on Windows PowerShell
 
@@ -10,8 +13,8 @@ Assumes the ZIP is in your Downloads folder and Python 3.11+ is installed.
 
 ```powershell
 Set-Location "$HOME\Downloads"
-Expand-Archive -Path .\cyber_ml_lab.zip -DestinationPath . -Force
-Set-Location .\cyber_ml_lab
+Expand-Archive -Path .\cyber-ML-lab-main.zip -DestinationPath . -Force
+Set-Location .\cyber-ML-lab-main
 py -3 --version
 py -3 -m venv .venv
 .\.venv\Scripts\Activate.ps1
@@ -20,7 +23,7 @@ python scripts/inspect_data.py --dataset phishing --rows 10
 ```
 
 - `Set-Location`: open the directory with the ZIP, then the extracted project.
-- `Expand-Archive`: extract the ZIP; do not accidentally open `cyber_ml_lab/cyber_ml_lab`.
+- `Expand-Archive`: extract the ZIP; do not accidentally open `cyber-ML-lab-main/cyber-ML-lab-main`.
 - `py -3 --version`: verify installed Python is version **3.11 or newer**.
 - `py -3 -m venv .venv`: create an isolated Python environment inside the lab.
 - `Activate.ps1`: activate that environment so `python` and `pip` refer to its packages.
@@ -38,8 +41,8 @@ python scripts/inspect_data.py --dataset phishing --rows 10
 
 ```bash
 cd ~/Downloads
-unzip -o cyber_ml_lab.zip
-cd cyber_ml_lab
+unzip -o cyber-ML-lab-main.zip
+cd cyber-ML-lab-main
 python3 --version
 python3 -m venv .venv
 source .venv/bin/activate
@@ -79,7 +82,7 @@ charts/exercise01_precision_recall.png
 charts/exercise01_roc.png
 ```
 
-**Stop here** until you can explain: How many false positives? How many false negatives? Which is more expensive in your phishing detection scenario? Compare the two figures to the printed `precision` and `recall`. Share your terminal output with your instructor before continuing.
+**Stop here** until you can explain: How many false positives? How many false negatives? Which is more expensive in your phishing detection scenario? Compare the two figures to the printed `precision` and `recall`.
 
 ## 4. The ML workflow you will implement repeatedly
 
@@ -304,7 +307,7 @@ python scripts/verify_lab.py
 3. Numeric imputation, scaling and categorical one-hot encoding are learned on training rows only in supervised/anomaly workflows. For TF-IDF, the vocabulary is also fit on training rows only. The scripts intentionally include missing values and irrelevant fields; these are not implementation errors.
 4. `outputs/` and `charts/` are generated per experiment; running the same `--name` overwrites that experiment's outputs. Charts are `.png`, metrics `.json`, predictions `.csv`.
 5. Validation can also be overfit by excessive repeated tuning. Use cross-validation on training for broad search; reserve validation for choosing a candidate and the final test for once-only confirmation. Challenge variants are separate synthetic samples, not evidence of real deployment performance.
-6. Classifier `predict_proba()` values are model probability estimates, not guaranteed to be calibrated. Isolated anomalies are not confirmed threats. Precision, recall and alert rates from these synthetic sets are illustrative of ML behaviour, **not expected bank/production detection performance**.
+6. Classifier `predict_proba()` values are model probability estimates, not guaranteed to be calibrated. Isolated anomalies are not confirmed threats. Precision, recall and alert rates from these synthetic sets are illustrative of ML behaviour, **not expected production detection performance**.
 7. For clustering, the PCA chart depicts a linear 2D projection of higher-dimensional inputs; visual proximity need not correspond to all high-dimensional distances. K-means requires a chosen `k`; DBSCAN noise is not itself malicious.
 8. Dataset generation regenerates the eight CSV files and **overwrites** their contents deterministically. Never regenerate after hand-editing a challenge CSV unless you have saved your changes separately.
 9. XGBoost is not a core dependency: `python -m pip install xgboost` then use `--algorithm xgboost` optionally. Neural network lesson is deliberately implemented with NumPy rather than introducing another heavyweight dependency.
@@ -320,7 +323,7 @@ python scripts/evaluate_shift.py --algorithm random_forest --features basic --na
 python scripts/evaluate_shift.py --algorithm random_forest --features extended --name shift_frozen_extended
 ```
 
-This fits feature preprocessing and the model using original **training rows only**, evaluates on old validation hosts, then applies the unchanged model and threshold to the entire separately generated challenge CSV. It writes `outputs/shift_frozen_basic_shift_metrics.json`, two prediction CSVs and a comparison chart. The new cohort is synthetic and not an unbiased estimate of any bank deployment environment. This assesses cross-cohort performance drift rather than within-cohort model selection.
+This fits feature preprocessing and the model using original **training rows only**, evaluates on old validation hosts, then applies the unchanged model and threshold to the entire separately generated challenge CSV. It writes `outputs/shift_frozen_basic_shift_metrics.json`, two prediction CSVs and a comparison chart. The new cohort is synthetic and not an unbiased estimate of any production deployment environment. This assesses cross-cohort performance drift rather than within-cohort model selection.
 
 For a **permutation/impurity feature-importance** starting point, train `--algorithm random_forest`; inspect `charts/<name>_feature_importance.png`. The plotted impurity importance indicates model split utility, not causal attribution. For operational interpretability, compare errors across populations, avoid treating correlated predictors as independent causes and consider a separately validated permutation-importance experiment.
 

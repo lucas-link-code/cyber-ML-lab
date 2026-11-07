@@ -8,7 +8,7 @@
 
 **ALGORITHM:** Logistic regression; hold the fitted algorithm and input feature set fixed.
 
-**COMMAND:** Run from the `cyber_ml_lab` folder with your virtual environment activated.
+**COMMAND:** Run from the lab folder with your virtual environment activated.
 
 ```bash
 python scripts/run_classification.py --threshold 0.30 --name phish_loose

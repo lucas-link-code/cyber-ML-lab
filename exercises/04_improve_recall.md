@@ -8,7 +8,7 @@
 
 **ALGORITHM:** Logistic regression with the **basic** EDR feature set.
 
-**COMMAND:** Run from the `cyber_ml_lab` folder with your virtual environment activated.
+**COMMAND:** Run from the lab folder with your virtual environment activated.
 
 ```bash
 python scripts/run_classification.py --dataset edr --algorithm logistic --features basic --name edr_default
