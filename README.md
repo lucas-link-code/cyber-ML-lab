@@ -111,7 +111,7 @@ For anomaly detection, fitting and score-threshold calibration use **only traini
 
 A classification run also writes the learned parameters to `outputs/<name>_weights.txt`. The metrics JSON and the confusion matrix chart are the score of those fixed parameters. They are not a second round of learning.
 
-### What fit is doing
+### What fit() function is doing
 
 `fit` means: find parameters that reduce mistakes on the training rows.
 
@@ -131,7 +131,7 @@ You can change the result in three places. Only the first two call `fit` again.
 
 3. Change the decision threshold. `--threshold 0.7` keeps the same probabilities and moves the cutoff that turns a probability into class 0 or class 1. Precision, recall, and the confusion matrix move. ROC AUC and average precision stay put, because those scores describe the ranking, not one cutoff. A threshold change cannot repair a model that ranked the validation rows poorly.
 
-### When a high training F1 is not evidence
+### High training F1 is not evidence of model quality
 
 Training F1 near 1.0 means the model matched the training rows very closely. That can be memorisation of those rows rather than a rule that holds on new ones.
 
@@ -139,7 +139,7 @@ The saved phishing forest in `outputs/exercise03_forest_metrics.json` is an unre
 
 Tighten `--max-depth`, raise `--min-samples-leaf`, or keep the simpler model when the validation metrics are tied. Exercise 10 repeats the comparison on EDR by limiting tree depth. Moving the threshold above or below 0.5 changes the precision and recall tradeoff on the same scores. It does not close a gap between training F1 and validation F1.
 
-## 5. Four datasets, four questions
+## 5. Four datasets
 
 The exercises rotate through four jobs. Section 7 lists every CSV, including the challenge cohorts. This section is the job each main file is for.
 
@@ -151,7 +151,7 @@ The exercises rotate through four jobs. Section 7 lists every CSV, including the
 
 **Network activity.** `datasets/network_activity.csv` has 5,000 rows. Clustering looks for groups of similar connection behaviour. Anomaly detection looks for sessions that sit far from the learned normal. A cluster id or a high anomaly score is not, by itself, a malicious verdict. Labels are withheld until after fitting, and only then used to interpret the result.
 
-### Classification, a category
+### Classification
 
 The prediction is a class. In this lab, class 0 is the legitimate or benign case and class 1 is the malicious case.
 
@@ -169,7 +169,7 @@ The prediction is a class. In this lab, class 0 is the legitimate or benign case
 
 `run_classification.py` trains every row in that table except the neural network. The neural network exercise is there to show forward propagation and backpropagation on a toy problem, not to classify the CSVs.
 
-### Regression, a number
+### Regression
 
 The prediction is a continuous value, such as 45.6 minutes of investigation time. `run_regression.py` reads `datasets/alert_triage.csv`.
 
@@ -185,7 +185,7 @@ The prediction is a continuous value, such as 45.6 minutes of investigation time
 
 Random forest is two different estimators. Classification uses `RandomForestClassifier`. Regression uses `RandomForestRegressor`. The algorithm family is shared. The thing being predicted is not.
 
-### Unsupervised learning, no label during fit
+### Unsupervised learning, no labels during fit
 
 | Task                     | Question                                    | In this lab                                                                           |
 | ------------------------ | ------------------------------------------- | ------------------------------------------------------------------------------------- |
@@ -193,7 +193,7 @@ Random forest is two different estimators. Classification uses `RandomForestClas
 | Anomaly detection        | Which rows sit far from the learned normal  | `run_anomaly.py`: `isolation_forest`, `lof`, `one_class_svm`, `zscore`                |
 | Dimensionality reduction | How to draw many features in two dimensions | PCA chart written by the clustering script, not a model you select with `--algorithm` |
 
-### The same records, four questions
+### Additional tasks with the same data
 
 One collection of endpoint process records can be asked four different questions.
 
